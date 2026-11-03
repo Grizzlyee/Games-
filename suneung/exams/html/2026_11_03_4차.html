@@ -1,0 +1,506 @@
+<title>수학 오답 재시험</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@400;700;800&family=IBM+Plex+Sans+KR:wght@400;500;700&display=swap">
+<style>
+/* Layout: 실제 시험지처럼 상단 표제 + 2단 문제(좁은 화면 1단) + 하단 답안지. 채점은 빨간 색연필. */
+:root {
+  --paper: #fbfcfd;
+  --ink: #16181d;
+  --muted: #5d6470;
+  --rule: #c9ced6;
+  --tint: #eef1f5;
+  --red: #cf1f2e;
+  --ok: #cf1f2e;
+  --font-exam: "Nanum Myeongjo", "AppleMyungjo", "Batang", "Noto Serif KR", serif;
+  --font-ui: "IBM Plex Sans KR", "Apple SD Gothic Neo", "Malgun Gothic", system-ui, sans-serif;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --paper: #15171b; --ink: #e8eaee; --muted: #9aa1ad; --rule: #343944; --tint: #1f2228; --red: #ff6b6b; --ok: #ff6b6b;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --paper: #15171b; --ink: #e8eaee; --muted: #9aa1ad; --rule: #343944; --tint: #1f2228; --red: #ff6b6b; --ok: #ff6b6b;
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+body {
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-ui);
+  font-size: 15px;
+  line-height: 1.6;
+}
+body::before {
+  content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px);
+  z-index: 10; background: var(--paper);
+}
+.wrap {
+  max-width: 1040px;
+  margin: 0 auto;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+  padding-block: 20px 48px;
+}
+
+/* 상단 고정 바 */
+.bar {
+  position: sticky; top: env(safe-area-inset-top, 0px); z-index: 5;
+  background: var(--paper);
+  border-bottom: 1px solid var(--rule);
+}
+.bar-in {
+  max-width: 1040px; margin: 0 auto;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+  padding-block: 10px;
+  display: flex; align-items: center; gap: 12px; flex-wrap: wrap;
+}
+.timer { font-variant-numeric: tabular-nums; font-weight: 700; font-size: 18px; min-width: 64px; }
+.timer.over { color: var(--red); }
+.progress { color: var(--muted); font-size: 13px; font-variant-numeric: tabular-nums; }
+.spacer { flex: 1; }
+button { font: inherit; cursor: pointer; }
+.btn {
+  border: 1.5px solid var(--ink); background: transparent; color: var(--ink);
+  padding: 6px 14px; border-radius: 4px; font-weight: 500; font-size: 14px;
+}
+.btn.solid { background: var(--ink); color: var(--paper); }
+.btn:focus-visible, .choice:focus-visible, .cbtn:focus-visible, .sa input:focus-visible, .cell:focus-visible, .field input:focus-visible {
+  outline: 2px solid var(--red); outline-offset: 2px;
+}
+
+/* 표제 */
+.masthead { border: 2px solid var(--ink); padding: 18px 20px 14px; display: grid; gap: 10px; }
+.mh-top { display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; font-size: 13px; color: var(--muted); letter-spacing: 0.04em; }
+.mh-title { font-family: var(--font-exam); font-weight: 800; font-size: clamp(26px, 5vw, 40px); text-align: center; letter-spacing: 0.18em; line-height: 1.25; text-wrap: balance; }
+.mh-sub { text-align: center; font-family: var(--font-exam); font-size: 15px; }
+.mh-row { display: flex; gap: 10px 20px; flex-wrap: wrap; justify-content: space-between; align-items: end; border-top: 1px solid var(--rule); padding-top: 10px; }
+.field { display: flex; align-items: center; gap: 8px; font-size: 14px; }
+.field input {
+  border: 0; border-bottom: 1px solid var(--ink); background: transparent; color: var(--ink);
+  font: inherit; width: 120px; padding: 2px 4px;
+}
+.notes { font-size: 13px; color: var(--muted); display: grid; gap: 2px; }
+.notes b { color: var(--ink); font-weight: 500; }
+
+/* 결과 */
+.result { margin-top: 18px; border: 2px solid var(--red); padding: 16px 18px; display: grid; gap: 10px; }
+.score-line { display: flex; align-items: baseline; gap: 12px; flex-wrap: wrap; }
+.score { font-family: var(--font-exam); font-weight: 800; font-size: 44px; color: var(--red); line-height: 1; font-variant-numeric: tabular-nums; }
+.score small { font-size: 18px; color: var(--muted); font-weight: 700; }
+.result-meta { color: var(--muted); font-size: 14px; }
+.wrong-list { font-size: 14px; }
+.result-actions { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; }
+.hint { font-size: 13px; color: var(--muted); }
+
+/* 문제지 본문 */
+.section-label {
+  margin: 26px 0 10px; font-family: var(--font-exam); font-weight: 700; font-size: 16px;
+  display: flex; align-items: center; gap: 10px;
+}
+.section-label::after { content: ""; flex: 1; border-top: 1px solid var(--ink); }
+.paper { display: block; }
+@media (min-width: 860px) {
+  .paper { column-count: 2; column-gap: 44px; column-rule: 1px solid var(--rule); }
+}
+.q {
+  break-inside: avoid; padding: 14px 0 22px; font-family: var(--font-exam); font-size: 16px; line-height: 1.85;
+  border-bottom: 1px dashed var(--rule); margin-bottom: 12px; scroll-margin-top: 80px;
+}
+.q-head { display: flex; gap: 8px; }
+.num { position: relative; font-weight: 800; min-width: 26px; flex: none; }
+.stem { min-width: 0; }
+.stem i { font-style: italic; }
+.pts { font-family: var(--font-ui); font-size: 13px; color: var(--muted); white-space: nowrap; }
+.choices { display: flex; flex-wrap: wrap; gap: 6px 10px; margin: 10px 0 0 34px; }
+.choice {
+  border: 1px solid transparent; background: transparent; color: var(--ink);
+  font-family: var(--font-exam); font-size: 16px; padding: 3px 8px; border-radius: 999px;
+  min-width: 72px; text-align: left;
+}
+.choice:hover { border-color: var(--rule); }
+.choice[aria-pressed="true"] { background: var(--ink); color: var(--paper); border-color: var(--ink); }
+.choice.is-answer { box-shadow: 0 0 0 2px var(--red); }
+.sa { margin: 10px 0 0 34px; display: flex; align-items: center; gap: 8px; font-family: var(--font-ui); font-size: 14px; color: var(--muted); }
+.sa input {
+  width: 110px; font: 600 18px var(--font-ui); text-align: center; color: var(--ink); background: var(--tint);
+  border: 1px solid var(--rule); border-radius: 4px; padding: 4px 8px; font-variant-numeric: tabular-nums;
+}
+.sa input:disabled, .choice:disabled { cursor: default; opacity: 1; }
+.conf { margin: 8px 0 0 34px; display: flex; gap: 6px; align-items: center; flex-wrap: wrap; font-family: var(--font-ui); font-size: 12px; color: var(--muted); }
+.cbtn { border: 1px solid var(--rule); background: transparent; color: var(--muted); font: inherit; padding: 2px 8px; border-radius: 4px; }
+.cbtn[aria-pressed="true"] { border-color: var(--ink); color: var(--ink); background: var(--tint); font-weight: 700; }
+.cbtn:disabled { cursor: default; }
+
+/* 빨간 색연필 채점 표시 */
+.graded .num::before {
+  content: ""; position: absolute; pointer-events: none;
+}
+.q.correct .num::before {
+  left: -9px; top: -4px; width: 40px; height: 40px; border: 2.5px solid var(--ok); border-radius: 50%;
+  transform: rotate(-8deg);
+}
+.q.wrong .num::before {
+  left: -6px; top: 14px; width: 44px; height: 2.5px; background: var(--red); transform: rotate(-52deg);
+}
+.sol {
+  margin: 12px 0 0 34px; padding: 10px 12px; background: var(--tint); border-left: 3px solid var(--red);
+  font-family: var(--font-ui); font-size: 14px; line-height: 1.7;
+}
+.sol b { color: var(--red); }
+
+/* 답안지 */
+.omr { margin-top: 30px; border: 2px solid var(--ink); }
+.omr-head { padding: 10px 14px; border-bottom: 1px solid var(--ink); display: flex; justify-content: space-between; gap: 10px; flex-wrap: wrap; align-items: center; }
+.omr-head h2 { margin: 0; font-family: var(--font-exam); font-size: 18px; letter-spacing: 0.1em; }
+.omr-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(84px, 1fr)); }
+.cell {
+  border: 0; border-right: 1px solid var(--rule); border-bottom: 1px solid var(--rule);
+  background: transparent; color: var(--ink); padding: 8px 6px; display: grid; gap: 2px; text-align: center;
+}
+.cell .cn { font-size: 12px; color: var(--muted); }
+.cell .cv { font-weight: 700; font-size: 16px; min-height: 24px; font-variant-numeric: tabular-nums; }
+.cell.empty .cv { color: var(--rule); }
+.cell.c-ok .cv { color: var(--ok); }
+.cell.c-bad .cv { color: var(--red); text-decoration: line-through; }
+.omr-foot { padding: 12px 14px; display: flex; gap: 10px; flex-wrap: wrap; align-items: center; }
+.confirm { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; font-size: 14px; }
+footer.end { margin-top: 26px; text-align: center; font-family: var(--font-exam); color: var(--muted); font-size: 14px; letter-spacing: 0.1em; }
+@media (prefers-reduced-motion: no-preference) {
+  html { scroll-behavior: smooth; }
+}
+</style>
+
+<div class="bar">
+  <div class="bar-in">
+    <span class="timer" id="timer">30:00</span>
+    <button class="btn" id="timerBtn" type="button">타이머 시작</button>
+    <span class="progress" id="progress">0 / 10 문항 표시</span>
+    <span class="spacer"></span>
+    <button class="btn solid" id="jumpOmr" type="button">답안지</button>
+  </div>
+</div>
+
+<main class="wrap">
+  <header class="masthead">
+    <div class="mh-top"><span>2026_11_03_4차 · 3차 오답 재시험 (복습 1단계)</span><span>시험 시간 30분 · 10문항 · 30점</span></div>
+    <div class="mh-title">수학 영역</div>
+    <div class="mh-sub">해설을 덮고 다시 풀기 · 문항 옆에 원래 번호 표시</div>
+    <div class="mh-row">
+      <label class="field" for="examName">성명 <input id="examName" type="text" autocomplete="off"></label>
+      <div class="notes">
+        <span><b>1~4번</b> 5지선다형: 보기를 눌러 표시</span>
+        <span><b>5~10번</b> 단답형: 답은 자연수로 입력</span>
+        <span><b>확신</b> 문항마다 1 찍음 · 2 반신반의 · 3 확신 표시</span>
+      </div>
+    </div>
+  </header>
+
+  <section class="result" id="result" hidden>
+    <div class="score-line">
+      <span class="score" id="score">0<small> / 30점</small></span>
+      <span class="result-meta" id="resultMeta"></span>
+    </div>
+    <div class="wrong-list" id="wrongList"></div>
+    <div class="result-actions">
+      <button class="btn solid" id="copyBtn" type="button">결과 복사</button>
+      <span class="hint" id="copyHint">문항별 정오와 확신도가 복사돼요. Claude에게 붙여넣어 보내주세요.</span>
+    </div>
+    <textarea id="copyFallback" rows="4" style="width:100%;font:inherit;background:var(--tint);color:var(--ink);border:1px solid var(--rule);padding:8px" hidden readonly></textarea>
+  </section>
+
+  <div class="section-label">5지선다형</div>
+  <div class="paper" id="mcPaper"></div>
+
+  <div class="section-label">단답형</div>
+  <div class="paper" id="saPaper"></div>
+
+  <section class="omr" id="omr">
+    <div class="omr-head">
+      <h2>답 안 지</h2>
+      <span class="hint">칸을 누르면 해당 문항으로 이동해요.</span>
+    </div>
+    <div class="omr-grid" id="omrGrid"></div>
+    <div class="omr-foot" id="omrFoot">
+      <button class="btn solid" id="submitBtn" type="button">채점하기</button>
+      <div class="confirm" id="confirmBox" hidden>
+        <span id="confirmText"></span>
+        <button class="btn solid" id="confirmYes" type="button">제출하고 채점</button>
+        <button class="btn" id="confirmNo" type="button">계속 풀기</button>
+      </div>
+      <button class="btn" id="resetBtn" type="button" hidden>다시 풀기</button>
+      <div class="confirm" id="resetBox" hidden>
+        <span>표시한 답과 채점 결과가 모두 지워져요.</span>
+        <button class="btn solid" id="resetYes" type="button">지우고 다시 풀기</button>
+        <button class="btn" id="resetNo" type="button">취소</button>
+      </div>
+    </div>
+  </section>
+
+  <footer class="end">* 확인 사항: 답안지의 표시가 맞는지 확인하고 채점하세요.</footer>
+</main>
+
+<script>
+(function () {
+  var MARKS = ["①", "②", "③", "④", "⑤"];
+  var CONF = { 1: "1 찍음", 2: "2 반신반의", 3: "3 확신" };
+  var Q = [
+    { n: 1, pts: 2, stem: "(<i>x</i> + 3)(<i>x</i> − 2) 를 전개한 식에서 <b><u><i>x</i>의 계수</u></b>는? (계수 = 문자 앞에 곱해진 수) <span class=\"pts\">· 3차 2번</span>",
+      choices: ["−6", "−1", "1", "5", "6"], ans: 3,
+      sol: "(<i>x</i> + 3)(<i>x</i> − 2) = <i>x</i><sup>2</sup> + <i>x</i> − 6. <b><i>x</i>의 계수 = 1</b>. −6은 <i>x</i>가 붙지 않은 <b>상수항</b>이에요. 발문에서 무엇을 묻는지 먼저 동그라미 치세요." },
+    { n: 2, pts: 3, stem: "두 함수 <i>f</i>(<i>x</i>) = <i>x</i> + 2, <i>g</i>(<i>x</i>) = 2<i>x</i><sup>2</sup> − 1 에 대하여 (<i>g</i>∘<i>f</i>)(−1) 의 값은? <span class=\"pts\">· 3차 9번</span>",
+      choices: ["−1", "0", "1", "3", "7"], ans: 3,
+      sol: "(<i>g</i>∘<i>f</i>)(−1) = <i>g</i>(<i>f</i>(−1)). <b>∘ 오른쪽(<i>f</i>)부터</b>: <i>f</i>(−1) = 1 → <i>g</i>(1) = 2 − 1 = <b>1</b>. 보기 ④ 3은 순서를 바꾼 <i>f</i>(<i>g</i>(−1))이에요." },
+    { n: 3, pts: 3, stem: "남학생 4명, 여학생 3명 중에서 남학생 2명<b><u>과</u></b> 여학생 1명을 뽑는 경우의 수는? <span class=\"pts\">· 3차 11번</span>",
+      choices: ["12", "15", "18", "21", "35"], ans: 3,
+      sol: "대표는 순서 상관없음 → 남학생 2명: 4 × 3 ÷ 2 = 6. 여학생 1명: 3. '그리고(동시에)'는 <b>곱하기</b> → 6 × 3 = <b>18</b>. 15는 4 × 3 + 3처럼 순서를 따지고 더한 값이에요." },
+    { n: 4, pts: 4, stem: "이차함수 <i>y</i> = <i>x</i><sup>2</sup> − 2<i>ax</i> + <i>a</i><sup>2</sup> + 2<i>a</i> − 3 의 <b><u>최솟값</u></b>이 5 일 때, 상수 <i>a</i>의 값은? <span class=\"pts\">· 3차 13번</span>",
+      choices: ["1", "2", "3", "4", "5"], ans: 4,
+      sol: "<i>x</i><sup>2</sup> − 2<i>ax</i> + <i>a</i><sup>2</sup> = (<i>x</i> − <i>a</i>)<sup>2</sup> → <i>y</i> = (<i>x</i> − <i>a</i>)<sup>2</sup> + 2<i>a</i> − 3. 최솟값은 <b>완전제곱식 뒤에 남는 수</b> 2<i>a</i> − 3 = 5 → <i>a</i> = <b>4</b>. 상수항 <i>a</i><sup>2</sup> + 2<i>a</i> − 3은 <i>x</i> = 0일 때 값일 뿐 최솟값이 아니에요 (<i>a</i> = 2가 나온 이유)." },
+    { n: 5, pts: 2, stem: "<i>f</i>(<i>x</i>) = 2<i>x</i>, <i>g</i>(<i>x</i>) = <i>x</i> − 3 일 때, (<i>g</i>∘<i>f</i>)(4) 의 값을 구하시오. (빈칸 채우기: <i>g</i>(<i>f</i>(4)) = <i>g</i>(□) = □)<span class=\"pts\"> · 다시 배우기 연습</span>", ans: 5,
+      sol: "<i>f</i>(4) = 8 → <i>g</i>(8) = 8 − 3 = <b>5</b>" },
+    { n: 6, pts: 2, stem: "사과 5개 중 2개, <b><u>그리고</u></b> 배 4개 중 1개를 고르는 경우의 수를 구하시오. (같은 종류끼리 고르는 순서는 상관없음)<span class=\"pts\"> · 다시 배우기 연습</span>", ans: 40,
+      sol: "사과 2개: 5 × 4 ÷ 2 = 10, 배 1개: 4. 동시에 → 10 × 4 = <b>40</b>" },
+    { n: 7, pts: 3, stem: "이차방정식 <i>x</i><sup>2</sup> − 5<i>x</i> + 6 = 0 의 두 근을 α, β 라 할 때, α<sup>2</sup> + β<sup>2</sup> 의 값을 구하시오. <span class=\"pts\">· 3차 15번</span>", ans: 13,
+      sol: "두 근 2, 3 → 4 + 9 = <b>13</b>. 공식으로 풀면 α<sup>2</sup> + β<sup>2</sup> = (α + β)<sup>2</sup> <b>− 2αβ</b> = 25 − 12 = 13. (α + β)<sup>2</sup> = α<sup>2</sup> + 2αβ + β<sup>2</sup> 이니까 2αβ를 <b>빼야</b> 해요." },
+    { n: 8, pts: 4, stem: "부등식 |<i>x</i> − 3| < 5 를 만족시키는 모든 자연수 <i>x</i>의 <b><u>합</u></b>을 구하시오. <span class=\"pts\">· 3차 18번</span>", ans: 28,
+      sol: "−5 < <i>x</i> − 3 < 5 → −2 < <i>x</i> < 8 → 자연수 1, 2, …, 7. 묻는 것은 <b>합</b>: 1 + 2 + … + 7 = <b>28</b> (7은 개수)." },
+    { n: 9, pts: 3, stem: "이차함수 <i>y</i> = <i>x</i><sup>2</sup> + 2<i>x</i> + <i>k</i> 의 그래프의 꼭짓점이 직선 <i>y</i> = 2<i>x</i> + 5 위에 있을 때, 상수 <i>k</i>의 값을 구하시오. <span class=\"pts\">· 3차 17번</span>", ans: 4,
+      sol: "① 완전제곱식: <i>y</i> = (<i>x</i> + 1)<sup>2</sup> + <i>k</i> − 1 → 꼭짓점 (−1, <i>k</i> − 1). ② '직선 위에 있다' = 좌표를 직선에 대입하면 성립: <i>k</i> − 1 = 2 × (−1) + 5 = 3 → <i>k</i> = <b>4</b>" },
+    { n: 10, pts: 4, stem: "두 주사위 A, B를 던져 나온 눈의 수를 각각 <i>a</i>, <i>b</i> 이라 하자. 이차방정식 <i>x</i><sup>2</sup> + <i>a</i><i>x</i> + <i>b</i> = 0 이 <b><u>실근</u></b>을 갖도록 하는 순서쌍 (<i>a</i>, <i>b</i>)의 개수를 구하시오. <span class=\"pts\">· 3차 20번</span>", ans: 19,
+      sol: "실근 ⇔ 판별식 D = <i>a</i><sup>2</sup> − 4<i>b</i> <b>≥ 0</b> (D = 0인 중근도 실근!). <i>a</i> = 1 → 0개, 2 → 1개 (<i>b</i> = 1, D = 0), 3 → 2개, 4 → 4개 (<i>b</i> = 4는 D = 0), 5 → 6개, 6 → 6개 → <b>19</b>" }
+  ];
+
+  var KEY = "retry-2026-11-03-4-v1";
+  var state = { name: "", answers: {}, conf: {}, graded: false, timerStart: null, elapsedAtGrade: null };
+  try {
+    var saved = JSON.parse(localStorage.getItem(KEY) || "null");
+    if (saved && typeof saved === "object") state = Object.assign(state, saved);
+  } catch (e) {}
+  if (window.claude && window.claude.hot && window.claude.hot.data && window.claude.hot.data.answers) {
+    state = Object.assign(state, window.claude.hot.data);
+  }
+  if (!state.conf || typeof state.conf !== "object") state.conf = {};
+  function save() { try { localStorage.setItem(KEY, JSON.stringify(state)); } catch (e) {} }
+  if (window.claude && window.claude.hot && window.claude.hot.snapshot) {
+    try { window.claude.hot.snapshot(function () { return state; }); } catch (e) {}
+  }
+
+  var $ = function (id) { return document.getElementById(id); };
+
+  function render() {
+    var mc = $("mcPaper"), sa = $("saPaper");
+    mc.innerHTML = ""; sa.innerHTML = "";
+    Q.forEach(function (q) {
+      var art = document.createElement("article");
+      art.className = "q"; art.id = "q" + q.n;
+      var html = '<div class="q-head"><span class="num">' + q.n + '.</span><div class="stem">' + q.stem +
+        ' <span class="pts">[' + q.pts + '점]</span></div></div>';
+      if (q.choices) {
+        html += '<div class="choices" role="group" aria-label="' + q.n + '번 보기">';
+        q.choices.forEach(function (c, i) {
+          html += '<button type="button" class="choice" id="c' + q.n + '-' + (i + 1) + '" data-q="' + q.n + '" data-v="' + (i + 1) + '" aria-pressed="false">' + MARKS[i] + ' ' + c + '</button>';
+        });
+        html += "</div>";
+      } else {
+        html += '<label class="sa" for="sa' + q.n + '">답 <input id="sa' + q.n + '" data-q="' + q.n + '" type="text" inputmode="numeric" autocomplete="off" maxlength="3"></label>';
+      }
+      html += '<div class="conf" role="group" aria-label="' + q.n + '번 확신도"><span>확신</span>' + [1, 2, 3].map(function (k) {
+        return '<button type="button" class="cbtn" id="k' + q.n + '-' + k + '" data-cq="' + q.n + '" data-cv="' + k + '" aria-pressed="false">' + CONF[k] + '</button>';
+      }).join("") + '</div>';
+      html += '<div class="sol" id="sol' + q.n + '" hidden><b>정답 ' + (q.choices ? MARKS[q.ans - 1] : q.ans) + '</b> · ' + q.sol + '</div>';
+      art.innerHTML = html;
+      (q.choices ? mc : sa).appendChild(art);
+    });
+
+    var grid = $("omrGrid"); grid.innerHTML = "";
+    Q.forEach(function (q) {
+      var b = document.createElement("button");
+      b.type = "button"; b.className = "cell"; b.id = "cell" + q.n; b.dataset.q = q.n;
+      b.innerHTML = '<span class="cn">' + q.n + '번</span><span class="cv"></span>';
+      grid.appendChild(b);
+    });
+  }
+
+  function answered(q) {
+    var v = state.answers[q.n];
+    return v !== undefined && v !== null && String(v).trim() !== "";
+  }
+
+  function sync() {
+    $("examName").value = state.name || "";
+    var count = 0;
+    Q.forEach(function (q) {
+      var v = state.answers[q.n];
+      if (answered(q)) count++;
+      if (q.choices) {
+        for (var i = 1; i <= 5; i++) {
+          var btn = $("c" + q.n + "-" + i);
+          btn.setAttribute("aria-pressed", String(Number(v) === i));
+          btn.disabled = state.graded;
+          btn.classList.toggle("is-answer", state.graded && q.ans === i);
+        }
+      } else {
+        var inp = $("sa" + q.n);
+        if (document.activeElement !== inp) inp.value = v == null ? "" : v;
+        inp.disabled = state.graded;
+      }
+      for (var k = 1; k <= 3; k++) {
+        var kb = $("k" + q.n + "-" + k);
+        kb.setAttribute("aria-pressed", String(Number(state.conf[q.n]) === k));
+        kb.disabled = state.graded;
+      }
+      var cell = $("cell" + q.n);
+      cell.querySelector(".cv").textContent = answered(q) ? (q.choices ? MARKS[Number(v) - 1] : String(v).trim()) : "·";
+      cell.classList.toggle("empty", !answered(q));
+      var art = $("q" + q.n);
+      var ok = isCorrect(q);
+      art.classList.toggle("graded", state.graded);
+      art.classList.toggle("correct", state.graded && ok);
+      art.classList.toggle("wrong", state.graded && !ok);
+      cell.classList.toggle("c-ok", state.graded && ok);
+      cell.classList.toggle("c-bad", state.graded && !ok && answered(q));
+      $("sol" + q.n).hidden = !state.graded;
+    });
+    $("progress").textContent = count + " / 10 문항 표시";
+    $("submitBtn").hidden = state.graded;
+    $("resetBtn").hidden = !state.graded;
+    if (state.graded) { $("confirmBox").hidden = true; showResult(); } else { $("result").hidden = true; }
+    $("timerBtn").hidden = !!state.timerStart || state.graded;
+    tick();
+  }
+
+  function isCorrect(q) {
+    var v = state.answers[q.n];
+    if (!answered(q)) return false;
+    if (q.choices) return Number(v) === q.ans;
+    var s = String(v).trim();
+    return /^\d+$/.test(s) && parseInt(s, 10) === q.ans;
+  }
+
+  function fmt(ms) {
+    var s = Math.max(0, Math.floor(ms / 1000));
+    var m = Math.floor(s / 60), r = s % 60;
+    return (m < 10 ? "0" : "") + m + ":" + (r < 10 ? "0" : "") + r;
+  }
+
+  var LIMIT = 30 * 60 * 1000;
+  function tick() {
+    var t = $("timer");
+    if (!state.timerStart) { t.textContent = "30:00"; t.classList.remove("over"); return; }
+    var elapsed = state.graded && state.elapsedAtGrade != null ? state.elapsedAtGrade : Date.now() - state.timerStart;
+    var left = LIMIT - elapsed;
+    if (left >= 0) { t.textContent = fmt(left); t.classList.remove("over"); }
+    else { t.textContent = "+" + fmt(-left); t.classList.add("over"); }
+  }
+  setInterval(tick, 1000);
+
+  function showResult() {
+    var total = 0, right = 0, wrong = [];
+    Q.forEach(function (q) {
+      if (isCorrect(q)) { total += q.pts; right++; }
+      else wrong.push(q);
+    });
+    $("result").hidden = false;
+    $("score").innerHTML = total + "<small> / 30점</small>";
+    var meta = "맞은 문항 " + right + " / 10";
+    if (state.elapsedAtGrade != null) meta += " · 걸린 시간 " + fmt(state.elapsedAtGrade);
+    $("resultMeta").textContent = meta;
+    if (!wrong.length) {
+      $("wrongList").textContent = "전부 맞혔어요. 이 문항들은 복습 2단계(+1주)로 넘어가요.";
+    } else {
+      $("wrongList").innerHTML = "틀린 문항: " + wrong.map(function (q) {
+        return '<a href="#q' + q.n + '" style="color:var(--red)">' + q.n + "번</a>";
+      }).join(", ") + " · 각 문항 아래에 해설이 열렸어요.";
+    }
+  }
+
+  function resultText() {
+    var total = 0, lines = [];
+    Q.forEach(function (q) {
+      var ok = isCorrect(q);
+      if (ok) total += q.pts;
+      var v = state.answers[q.n];
+      var mine = answered(q) ? (q.choices ? MARKS[Number(v) - 1] : String(v).trim()) : "빈칸";
+      var real = q.choices ? MARKS[q.ans - 1] : q.ans;
+      var c = state.conf[q.n] ? state.conf[q.n] : "-";
+      lines.push(q.n + "번 " + (ok ? "O" : "X") + " | 내 답 " + mine + (ok ? "" : " (정답 " + real + ")") + " | 확신 " + c);
+    });
+    var head = "[2026_11_03_4차 수학 오답 재시험] " + total + " / 30점";
+    if (state.elapsedAtGrade != null) head += ", 걸린 시간 " + fmt(state.elapsedAtGrade);
+    return head + "\n" + lines.join("\n");
+  }
+
+  document.addEventListener("click", function (e) {
+    var c = e.target.closest(".choice");
+    if (c && !state.graded) {
+      var n = c.dataset.q, v = Number(c.dataset.v);
+      if (Number(state.answers[n]) === v) delete state.answers[n]; else state.answers[n] = v;
+      save(); sync(); return;
+    }
+    var kbtn = e.target.closest(".cbtn");
+    if (kbtn && !state.graded) {
+      var cq = kbtn.dataset.cq, cv = Number(kbtn.dataset.cv);
+      if (Number(state.conf[cq]) === cv) delete state.conf[cq]; else state.conf[cq] = cv;
+      save(); sync(); return;
+    }
+    var cell = e.target.closest(".cell");
+    if (cell) { var el = $("q" + cell.dataset.q); if (el) el.scrollIntoView({ block: "start" }); }
+  });
+  document.addEventListener("input", function (e) {
+    if (e.target.matches(".sa input")) {
+      var val = e.target.value.replace(/[^\d]/g, "");
+      e.target.value = val;
+      if (val === "") delete state.answers[e.target.dataset.q]; else state.answers[e.target.dataset.q] = val;
+      save(); sync();
+    } else if (e.target.id === "examName") {
+      state.name = e.target.value; save();
+    }
+  });
+
+  $("timerBtn").addEventListener("click", function () { state.timerStart = Date.now(); save(); sync(); });
+  $("jumpOmr").addEventListener("click", function () { $("omr").scrollIntoView({ block: "start" }); });
+
+  $("submitBtn").addEventListener("click", function () {
+    var empty = Q.filter(function (q) { return !answered(q); }).length;
+    $("confirmText").textContent = empty ? "아직 " + empty + "문항이 비어 있어요. 제출하면 답을 바꿀 수 없어요." : "제출하면 답을 바꿀 수 없어요.";
+    $("confirmBox").hidden = false; $("submitBtn").hidden = true;
+  });
+  $("confirmNo").addEventListener("click", function () { $("confirmBox").hidden = true; $("submitBtn").hidden = false; });
+  $("confirmYes").addEventListener("click", function () {
+    state.graded = true;
+    state.elapsedAtGrade = state.timerStart ? Date.now() - state.timerStart : null;
+    save(); sync();
+    $("result").scrollIntoView({ block: "start" });
+  });
+
+  $("resetBtn").addEventListener("click", function () { $("resetBox").hidden = false; $("resetBtn").hidden = true; });
+  $("resetNo").addEventListener("click", function () { $("resetBox").hidden = true; $("resetBtn").hidden = false; });
+  $("resetYes").addEventListener("click", function () {
+    state = { name: state.name, answers: {}, conf: {}, graded: false, timerStart: null, elapsedAtGrade: null };
+    save(); $("resetBox").hidden = true; $("copyFallback").hidden = true; sync();
+    window.scrollTo(0, 0);
+  });
+
+  $("copyBtn").addEventListener("click", function () {
+    var text = resultText();
+    var fb = $("copyFallback");
+    function fallback() {
+      fb.value = text; fb.hidden = false; fb.focus(); fb.select();
+      $("copyHint").textContent = "아래 글을 길게 눌러 복사해 주세요.";
+    }
+    try {
+      navigator.clipboard.writeText(text).then(function () {
+        $("copyHint").textContent = "복사했어요. Claude에게 붙여넣어 보내주세요.";
+      }, fallback);
+    } catch (e) { fallback(); }
+  });
+
+  render();
+  sync();
+})();
+</script>
