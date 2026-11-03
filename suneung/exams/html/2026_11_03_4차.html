@@ -154,9 +154,12 @@ button { font: inherit; cursor: pointer; }
 .sol b { color: var(--red); }
 
 /* 답안지 */
-.omr { margin-top: 30px; border: 2px solid var(--ink); }
-.omr-head { padding: 10px 14px; border-bottom: 1px solid var(--ink); display: flex; justify-content: space-between; gap: 10px; flex-wrap: wrap; align-items: center; }
+.omr { margin-top: 16px; border: 2px solid var(--ink); }
+.omr-head { padding: 10px 14px; display: flex; justify-content: space-between; gap: 10px; flex-wrap: wrap; align-items: center; }
 .omr-head h2 { margin: 0; font-family: var(--font-exam); font-size: 18px; letter-spacing: 0.1em; }
+.submit-area { margin-top: 30px; border: 2px solid var(--ink); padding: 12px 14px; display: flex; gap: 10px; flex-wrap: wrap; align-items: center; }
+#omrBody { border-top: 1px solid var(--ink); }
+.omr-hint { margin: 0; padding: 8px 14px; border-bottom: 1px solid var(--rule); }
 .omr-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(84px, 1fr)); }
 .cell {
   border: 0; border-right: 1px solid var(--rule); border-bottom: 1px solid var(--rule);
@@ -181,7 +184,8 @@ footer.end { margin-top: 26px; text-align: center; font-family: var(--font-exam)
     <button class="btn" id="timerBtn" type="button">타이머 시작</button>
     <span class="progress" id="progress">0 / 10 문항 표시</span>
     <span class="spacer"></span>
-    <button class="btn solid" id="jumpOmr" type="button">답안지</button>
+    <button class="btn" id="jumpOmr" type="button" aria-expanded="false" aria-controls="omrBody">답안지</button>
+    <button class="btn solid" id="barSubmit" type="button">제출</button>
   </div>
 </div>
 
@@ -219,13 +223,8 @@ footer.end { margin-top: 26px; text-align: center; font-family: var(--font-exam)
   <div class="section-label">단답형</div>
   <div class="paper" id="saPaper"></div>
 
-  <section class="omr" id="omr">
-    <div class="omr-head">
-      <h2>답 안 지</h2>
-      <span class="hint">칸을 누르면 해당 문항으로 이동해요.</span>
-    </div>
-    <div class="omr-grid" id="omrGrid"></div>
-    <div class="omr-foot" id="omrFoot">
+  <section class="submit-area" id="submitArea">
+      <span class="hint" id="submitHint">다 풀었으면 제출하세요. 위쪽 바의 제출 버튼도 같아요.</span>
       <button class="btn solid" id="submitBtn" type="button">채점하기</button>
       <div class="confirm" id="confirmBox" hidden>
         <span id="confirmText"></span>
@@ -238,6 +237,16 @@ footer.end { margin-top: 26px; text-align: center; font-family: var(--font-exam)
         <button class="btn solid" id="resetYes" type="button">지우고 다시 풀기</button>
         <button class="btn" id="resetNo" type="button">취소</button>
       </div>
+  </section>
+
+  <section class="omr" id="omr">
+    <div class="omr-head">
+      <h2>답 안 지</h2>
+      <button class="btn" id="omrToggle" type="button" aria-expanded="false" aria-controls="omrBody">답안지 보기</button>
+    </div>
+    <div id="omrBody" hidden>
+      <p class="hint omr-hint">칸을 누르면 해당 문항으로 이동해요.</p>
+      <div class="omr-grid" id="omrGrid"></div>
     </div>
   </section>
 
@@ -368,6 +377,8 @@ footer.end { margin-top: 26px; text-align: center; font-family: var(--font-exam)
     });
     $("progress").textContent = count + " / 10 문항 표시";
     $("submitBtn").hidden = state.graded;
+    $("barSubmit").textContent = state.graded ? "결과 보기" : "제출";
+    $("submitHint").hidden = state.graded;
     $("resetBtn").hidden = !state.graded;
     if (state.graded) { $("confirmBox").hidden = true; showResult(); } else { $("result").hidden = true; }
     $("timerBtn").hidden = !!state.timerStart || state.graded;
@@ -463,7 +474,23 @@ footer.end { margin-top: 26px; text-align: center; font-family: var(--font-exam)
   });
 
   $("timerBtn").addEventListener("click", function () { state.timerStart = Date.now(); save(); sync(); });
-  $("jumpOmr").addEventListener("click", function () { $("omr").scrollIntoView({ block: "start" }); });
+  function setOmr(open) {
+    $("omrBody").hidden = !open;
+    $("omrToggle").setAttribute("aria-expanded", String(open));
+    $("omrToggle").textContent = open ? "답안지 접기" : "답안지 보기";
+    $("jumpOmr").setAttribute("aria-expanded", String(open));
+  }
+  $("omrToggle").addEventListener("click", function () { setOmr($("omrBody").hidden); });
+  $("jumpOmr").addEventListener("click", function () {
+    var open = $("omrBody").hidden;
+    setOmr(open);
+    if (open) $("omr").scrollIntoView({ block: "start" });
+  });
+  $("barSubmit").addEventListener("click", function () {
+    if (state.graded) { $("result").scrollIntoView({ block: "start" }); return; }
+    $("submitBtn").click();
+    $("submitArea").scrollIntoView({ block: "center" });
+  });
 
   $("submitBtn").addEventListener("click", function () {
     var empty = Q.filter(function (q) { return !answered(q); }).length;
