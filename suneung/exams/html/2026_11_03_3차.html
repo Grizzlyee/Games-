@@ -69,7 +69,7 @@ button { font: inherit; cursor: pointer; }
   padding: 6px 14px; border-radius: 4px; font-weight: 500; font-size: 14px;
 }
 .btn.solid { background: var(--ink); color: var(--paper); }
-.btn:focus-visible, .choice:focus-visible, .sa input:focus-visible, .cell:focus-visible, .field input:focus-visible {
+.btn:focus-visible, .choice:focus-visible, .cbtn:focus-visible, .sa input:focus-visible, .cell:focus-visible, .field input:focus-visible {
   outline: 2px solid var(--red); outline-offset: 2px;
 }
 
@@ -131,6 +131,10 @@ button { font: inherit; cursor: pointer; }
   border: 1px solid var(--rule); border-radius: 4px; padding: 4px 8px; font-variant-numeric: tabular-nums;
 }
 .sa input:disabled, .choice:disabled { cursor: default; opacity: 1; }
+.conf { margin: 8px 0 0 34px; display: flex; gap: 6px; align-items: center; flex-wrap: wrap; font-family: var(--font-ui); font-size: 12px; color: var(--muted); }
+.cbtn { border: 1px solid var(--rule); background: transparent; color: var(--muted); font: inherit; padding: 2px 8px; border-radius: 4px; }
+.cbtn[aria-pressed="true"] { border-color: var(--ink); color: var(--ink); background: var(--tint); font-weight: 700; }
+.cbtn:disabled { cursor: default; }
 
 /* 빨간 색연필 채점 표시 */
 .graded .num::before {
@@ -183,7 +187,7 @@ footer.end { margin-top: 26px; text-align: center; font-family: var(--font-exam)
 
 <main class="wrap">
   <header class="masthead">
-    <div class="mh-top"><span>제1회 · 2028학년도 수능 대비 기초 진단</span><span>시험 시간 60분 · 20문항 · 60점</span></div>
+    <div class="mh-top"><span>2026_11_03_3차 · 2028학년도 수능 대비 기초 진단</span><span>시험 시간 60분 · 20문항 · 60점</span></div>
     <div class="mh-title">수학 영역</div>
     <div class="mh-sub">공통수학 핵심 (다항식 · 이차함수 · 부등식 · 함수 · 경우의 수)</div>
     <div class="mh-row">
@@ -191,6 +195,7 @@ footer.end { margin-top: 26px; text-align: center; font-family: var(--font-exam)
       <div class="notes">
         <span><b>1~14번</b> 5지선다형: 보기를 눌러 표시</span>
         <span><b>15~20번</b> 단답형: 답은 자연수로 입력</span>
+        <span><b>확신</b> 문항마다 1 찍음 · 2 반신반의 · 3 확신 표시</span>
       </div>
     </div>
   </header>
@@ -203,7 +208,7 @@ footer.end { margin-top: 26px; text-align: center; font-family: var(--font-exam)
     <div class="wrong-list" id="wrongList"></div>
     <div class="result-actions">
       <button class="btn solid" id="copyBtn" type="button">결과 복사</button>
-      <span class="hint" id="copyHint">복사해서 Claude에게 보내면 틀린 문제를 같이 분석해요.</span>
+      <span class="hint" id="copyHint">문항별 정오와 확신도가 복사돼요. Claude에게 붙여넣어 보내주세요.</span>
     </div>
     <textarea id="copyFallback" rows="4" style="width:100%;font:inherit;background:var(--tint);color:var(--ink);border:1px solid var(--rule);padding:8px" hidden readonly></textarea>
   </section>
@@ -242,6 +247,7 @@ footer.end { margin-top: 26px; text-align: center; font-family: var(--font-exam)
 <script>
 (function () {
   var MARKS = ["①", "②", "③", "④", "⑤"];
+  var CONF = { 1: "1 찍음", 2: "2 반신반의", 3: "3 확신" };
   var Q = [
     { n: 1, pts: 2, stem: "두 다항식 <i>A</i> = <i>x</i><sup>2</sup> + 2<i>x</i> − 1, <i>B</i> = 2<i>x</i><sup>2</sup> − <i>x</i> + 3 에 대하여 <i>A</i> + <i>B</i> 는?",
       choices: ["3<i>x</i><sup>2</sup> + <i>x</i> + 2", "3<i>x</i><sup>2</sup> + 3<i>x</i> + 2", "3<i>x</i><sup>2</sup> + <i>x</i> − 4", "<i>x</i><sup>2</sup> − 3<i>x</i> + 4", "3<i>x</i><sup>2</sup> − <i>x</i> + 2"], ans: 1,
@@ -300,7 +306,7 @@ footer.end { margin-top: 26px; text-align: center; font-family: var(--font-exam)
   ];
 
   var KEY = "mock-exam-1-v1";
-  var state = { name: "", answers: {}, graded: false, timerStart: null, elapsedAtGrade: null };
+  var state = { name: "", answers: {}, conf: {}, graded: false, timerStart: null, elapsedAtGrade: null };
   try {
     var saved = JSON.parse(localStorage.getItem(KEY) || "null");
     if (saved && typeof saved === "object") state = Object.assign(state, saved);
@@ -308,6 +314,7 @@ footer.end { margin-top: 26px; text-align: center; font-family: var(--font-exam)
   if (window.claude && window.claude.hot && window.claude.hot.data && window.claude.hot.data.answers) {
     state = Object.assign(state, window.claude.hot.data);
   }
+  if (!state.conf || typeof state.conf !== "object") state.conf = {};
   function save() { try { localStorage.setItem(KEY, JSON.stringify(state)); } catch (e) {} }
   if (window.claude && window.claude.hot && window.claude.hot.snapshot) {
     try { window.claude.hot.snapshot(function () { return state; }); } catch (e) {}
@@ -332,6 +339,9 @@ footer.end { margin-top: 26px; text-align: center; font-family: var(--font-exam)
       } else {
         html += '<label class="sa" for="sa' + q.n + '">답 <input id="sa' + q.n + '" data-q="' + q.n + '" type="text" inputmode="numeric" autocomplete="off" maxlength="3"></label>';
       }
+      html += '<div class="conf" role="group" aria-label="' + q.n + '번 확신도"><span>확신</span>' + [1, 2, 3].map(function (k) {
+        return '<button type="button" class="cbtn" id="k' + q.n + '-' + k + '" data-cq="' + q.n + '" data-cv="' + k + '" aria-pressed="false">' + CONF[k] + '</button>';
+      }).join("") + '</div>';
       html += '<div class="sol" id="sol' + q.n + '" hidden><b>정답 ' + (q.choices ? MARKS[q.ans - 1] : q.ans) + '</b> · ' + q.sol + '</div>';
       art.innerHTML = html;
       (q.choices ? mc : sa).appendChild(art);
@@ -368,6 +378,11 @@ footer.end { margin-top: 26px; text-align: center; font-family: var(--font-exam)
         var inp = $("sa" + q.n);
         if (document.activeElement !== inp) inp.value = v == null ? "" : v;
         inp.disabled = state.graded;
+      }
+      for (var k = 1; k <= 3; k++) {
+        var kb = $("k" + q.n + "-" + k);
+        kb.setAttribute("aria-pressed", String(Number(state.conf[q.n]) === k));
+        kb.disabled = state.graded;
       }
       var cell = $("cell" + q.n);
       cell.querySelector(".cv").textContent = answered(q) ? (q.choices ? MARKS[Number(v) - 1] : String(v).trim()) : "·";
@@ -439,16 +454,15 @@ footer.end { margin-top: 26px; text-align: center; font-family: var(--font-exam)
     Q.forEach(function (q) {
       var ok = isCorrect(q);
       if (ok) total += q.pts;
-      else {
-        var v = state.answers[q.n];
-        var mine = answered(q) ? (q.choices ? MARKS[Number(v) - 1] : String(v).trim()) : "빈칸";
-        var real = q.choices ? MARKS[q.ans - 1] : q.ans;
-        lines.push(q.n + "번(" + q.pts + "점): 내 답 " + mine + " / 정답 " + real);
-      }
+      var v = state.answers[q.n];
+      var mine = answered(q) ? (q.choices ? MARKS[Number(v) - 1] : String(v).trim()) : "빈칸";
+      var real = q.choices ? MARKS[q.ans - 1] : q.ans;
+      var c = state.conf[q.n] ? state.conf[q.n] : "-";
+      lines.push(q.n + "번 " + (ok ? "O" : "X") + " | 내 답 " + mine + (ok ? "" : " (정답 " + real + ")") + " | 확신 " + c);
     });
-    var head = "[공통수학 진단 모의고사 1회] " + total + " / 60점";
+    var head = "[2026_11_03_3차 수학] " + total + " / 60점";
     if (state.elapsedAtGrade != null) head += ", 걸린 시간 " + fmt(state.elapsedAtGrade);
-    return head + "\n" + (lines.length ? "틀린 문항\n" + lines.join("\n") : "전부 정답");
+    return head + "\n" + lines.join("\n");
   }
 
   document.addEventListener("click", function (e) {
@@ -456,6 +470,12 @@ footer.end { margin-top: 26px; text-align: center; font-family: var(--font-exam)
     if (c && !state.graded) {
       var n = c.dataset.q, v = Number(c.dataset.v);
       if (Number(state.answers[n]) === v) delete state.answers[n]; else state.answers[n] = v;
+      save(); sync(); return;
+    }
+    var kbtn = e.target.closest(".cbtn");
+    if (kbtn && !state.graded) {
+      var cq = kbtn.dataset.cq, cv = Number(kbtn.dataset.cv);
+      if (Number(state.conf[cq]) === cv) delete state.conf[cq]; else state.conf[cq] = cv;
       save(); sync(); return;
     }
     var cell = e.target.closest(".cell");
@@ -491,7 +511,7 @@ footer.end { margin-top: 26px; text-align: center; font-family: var(--font-exam)
   $("resetBtn").addEventListener("click", function () { $("resetBox").hidden = false; $("resetBtn").hidden = true; });
   $("resetNo").addEventListener("click", function () { $("resetBox").hidden = true; $("resetBtn").hidden = false; });
   $("resetYes").addEventListener("click", function () {
-    state = { name: state.name, answers: {}, graded: false, timerStart: null, elapsedAtGrade: null };
+    state = { name: state.name, answers: {}, conf: {}, graded: false, timerStart: null, elapsedAtGrade: null };
     save(); $("resetBox").hidden = true; $("copyFallback").hidden = true; sync();
     window.scrollTo(0, 0);
   });
