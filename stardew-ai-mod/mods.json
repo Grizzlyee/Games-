@@ -1,0 +1,2307 @@
+{
+ "checked": "2026-11-25",
+ "source": "Nexus Mods public GraphQL API (api.nexusmods.com/v2/graphql), game id 1303",
+ "tiers": [
+  {
+   "key": "base",
+   "label": "기반(필수)",
+   "mods": [
+    {
+     "id": 1915,
+     "name": "Content Patcher",
+     "version": "2.9.1",
+     "updated": "2026-04-16",
+     "adult": false,
+     "file_id": 160463,
+     "file_name": "Content Patcher 2.9.1",
+     "file_version": "2.9.1",
+     "size_mb": 0.4,
+     "archive_ext": "zip",
+     "marker": "ContentPatcher\\manifest.json",
+     "requires": [],
+     "url": "https://www.nexusmods.com/stardewvalley/mods/1915"
+    },
+    {
+     "id": 5098,
+     "name": "Generic Mod Config Menu (GMCM)",
+     "version": "1.16.0",
+     "updated": "2025-10-18",
+     "adult": false,
+     "file_id": 145906,
+     "file_name": "Generic Mod Config Menu 1.16.0",
+     "file_version": "1.16.0",
+     "size_mb": 0.1,
+     "archive_ext": "zip",
+     "marker": "GenericModConfigMenu\\manifest.json",
+     "requires": [],
+     "url": "https://www.nexusmods.com/stardewvalley/mods/5098"
+    },
+    {
+     "id": 3231,
+     "name": "Farm Type Manager (FTM)",
+     "version": "1.26.1",
+     "updated": "2025-11-14",
+     "adult": false,
+     "file_id": 148044,
+     "file_name": "Farm Type Manager v1.26.1",
+     "file_version": "1.26.1",
+     "size_mb": 0.1,
+     "archive_ext": "zip",
+     "marker": "FarmTypeManager\\manifest.json",
+     "requires": [
+      {
+       "id": 1915,
+       "name": "Content Patcher",
+       "notes": "Required for FTM v1.16.0 or newer"
+      }
+     ],
+     "url": "https://www.nexusmods.com/stardewvalley/mods/3231"
+    },
+    {
+     "id": 1348,
+     "name": "SpaceCore",
+     "version": "1.28.4",
+     "updated": "2025-10-19",
+     "adult": false,
+     "file_id": 145986,
+     "file_name": "SpaceCore 1.28.4",
+     "file_version": "1.28.4",
+     "size_mb": 0.4,
+     "archive_ext": "zip",
+     "marker": "SpaceCore\\manifest.json",
+     "requires": [],
+     "url": "https://www.nexusmods.com/stardewvalley/mods/1348"
+    },
+    {
+     "id": 14487,
+     "name": "Sprites in Detail",
+     "version": "0.6.1",
+     "updated": "2025-03-23",
+     "adult": false,
+     "file_id": 128149,
+     "file_name": "Sprites In Detail v0.6.1",
+     "file_version": "0.6.1",
+     "size_mb": 0.0,
+     "archive_ext": "zip",
+     "marker": "SpritesInDetail\\manifest.json",
+     "requires": [
+      {
+       "id": 1915,
+       "name": "Content Patcher",
+       "notes": "At least version 2.1.0"
+      }
+     ],
+     "url": "https://www.nexusmods.com/stardewvalley/mods/14487"
+    }
+   ]
+  },
+  {
+   "key": "user",
+   "label": "사용자 지정 목록(스크린샷)",
+   "mods": [
+    {
+     "id": 3753,
+     "name": "Stardew Valley Expanded",
+     "version": "1.15.11",
+     "updated": "2025-06-30",
+     "adult": false,
+     "file_id": 135998,
+     "file_name": "Stardew Valley Expanded",
+     "file_version": "1.15.11",
+     "size_mb": 102.3,
+     "archive_ext": "zip",
+     "marker": "Stardew Valley Expanded\\Stardew Valley Expanded Code\\manifest.json",
+     "requires": [
+      {
+       "id": 1915,
+       "name": "Content Patcher",
+       "notes": "Framework Mod"
+      },
+      {
+       "id": 3231,
+       "name": "Farm Type Manager (FTM)",
+       "notes": "Framework Mod"
+      }
+     ],
+     "url": "https://www.nexusmods.com/stardewvalley/mods/3753"
+    },
+    {
+     "id": 1083,
+     "name": "Anthro Characters Continued - Furry Overhaul Mod With Optional Genderswaps",
+     "version": "11.3.0",
+     "updated": "2026-07-10",
+     "adult": false,
+     "file_id": 174480,
+     "file_name": "Anthro Characters Continued 11.3.0",
+     "file_version": "11.3.0",
+     "size_mb": 0.0,
+     "archive_ext": null,
+     "marker": "AnthroCharactersContinued\\manifest.json",
+     "requires": [
+      {
+       "id": 1915,
+       "name": "Content Patcher",
+       "notes": ""
+      },
+      {
+       "id": 5098,
+       "name": "Generic Mod Config Menu (GMCM)",
+       "notes": ""
+      }
+     ],
+     "url": "https://www.nexusmods.com/stardewvalley/mods/1083"
+    },
+    {
+     "id": 24727,
+     "name": "Alternate Anthro Andy - Furry Bear",
+     "version": "1.0.1",
+     "updated": "2024-06-01",
+     "adult": false,
+     "file_id": 102013,
+     "file_name": "Alternate Anthro Andy",
+     "file_version": "1.0.1",
+     "size_mb": 0.3,
+     "archive_ext": "zip",
+     "marker": "AltAnthroAndy\\manifest.json",
+     "requires": [
+      {
+       "id": 1915,
+       "name": "Content Patcher",
+       "notes": "Required"
+      },
+      {
+       "id": 5098,
+       "name": "Generic Mod Config Menu (GMCM)",
+       "notes": "Optional but Recommended"
+      },
+      {
+       "id": 3753,
+       "name": "Stardew Valley Expanded",
+       "notes": "Required"
+      },
+      {
+       "id": 1083,
+       "name": "Anthro Characters Continued - Furry Overhaul Mod With Optional Genderswaps",
+       "notes": "Optional but Recommended"
+      },
+      {
+       "id": 22271,
+       "name": "Furry Stardew Valley Expanded Continued",
+       "notes": "Optional but Recommended"
+      }
+     ],
+     "url": "https://www.nexusmods.com/stardewvalley/mods/24727"
+    },
+    {
+     "id": 26541,
+     "name": "Hakan NPC - Furry Wolfman",
+     "version": "0.9.6",
+     "updated": "2025-11-02",
+     "adult": false,
+     "file_id": 147033,
+     "file_name": "Hakan_Stardew",
+     "file_version": "0.9.6",
+     "size_mb": 0.7,
+     "archive_ext": "zip",
+     "marker": "[CP] Haki_Stardew\\manifest.json",
+     "requires": [
+      {
+       "id": 1915,
+       "name": "Content Patcher",
+       "notes": ""
+      }
+     ],
+     "url": "https://www.nexusmods.com/stardewvalley/mods/26541"
+    },
+    {
+     "id": 28225,
+     "name": "Hakan NPC - Furry Wolfman Korean translation",
+     "version": "1.0",
+     "updated": "2024-09-29",
+     "adult": false,
+     "file_id": 112199,
+     "file_name": "Hakan Korean Patch by Coludy",
+     "file_version": "1.0",
+     "size_mb": 0.0,
+     "archive_ext": "zip",
+     "marker": null,
+     "requires": [
+      {
+       "id": 26541,
+       "name": "Hakan NPC - Furry Wolfman",
+       "notes": "원본 모드"
+      }
+     ],
+     "url": "https://www.nexusmods.com/stardewvalley/mods/28225"
+    },
+    {
+     "id": 22977,
+     "name": "Bara Anthro - Furry Characters",
+     "version": "1.6",
+     "updated": "2024-11-04",
+     "adult": true,
+     "file_id": 115028,
+     "file_name": "Bara Antho Characters",
+     "file_version": "1.621",
+     "size_mb": 0.6,
+     "archive_ext": "rar",
+     "marker": "BaraAnthroCharacters-1.2\\manifest.json",
+     "requires": [
+      {
+       "id": 1915,
+       "name": "Content Patcher",
+       "notes": ""
+      },
+      {
+       "id": 5098,
+       "name": "Generic Mod Config Menu (GMCM)",
+       "notes": ""
+      },
+      {
+       "id": 1083,
+       "name": "Anthro Characters Continued - Furry Overhaul Mod With Optional Genderswaps",
+       "notes": ""
+      }
+     ],
+     "url": "https://www.nexusmods.com/stardewvalley/mods/22977"
+    },
+    {
+     "id": 24846,
+     "name": "Enti's Furry Barafications",
+     "version": "1",
+     "updated": "2024-07-31",
+     "adult": true,
+     "file_id": 108174,
+     "file_name": "Enti's Furry Barafications",
+     "file_version": "1.2",
+     "size_mb": 0.5,
+     "archive_ext": "zip",
+     "marker": "Enti's Furry Barafications\\Enti's Furry Barafications\\manifest.json",
+     "requires": [
+      {
+       "id": 5098,
+       "name": "Generic Mod Config Menu (GMCM)",
+       "notes": ""
+      },
+      {
+       "id": 1915,
+       "name": "Content Patcher",
+       "notes": ""
+      },
+      {
+       "id": 1083,
+       "name": "Anthro Characters Continued - Furry Overhaul Mod With Optional Genderswaps",
+       "notes": ""
+      },
+      {
+       "id": 22977,
+       "name": "Bara Anthro - Furry Characters",
+       "notes": ""
+      }
+     ],
+     "url": "https://www.nexusmods.com/stardewvalley/mods/24846"
+    },
+    {
+     "id": 44387,
+     "name": "Bara Anthro XL - Furry Characters",
+     "version": "1.0",
+     "updated": "2026-04-27",
+     "adult": true,
+     "file_id": 165753,
+     "file_name": "Bara Anthro XL",
+     "file_version": "1.13",
+     "size_mb": 1.8,
+     "archive_ext": "zip",
+     "marker": "Bara Anthro Characters XL\\manifest.json",
+     "requires": [
+      {
+       "id": 1083,
+       "name": "Anthro Characters Continued - Furry Overhaul Mod With Optional Genderswaps",
+       "notes": ""
+      },
+      {
+       "id": 22977,
+       "name": "Bara Anthro - Furry Characters",
+       "notes": ""
+      },
+      {
+       "id": 24846,
+       "name": "Enti's Furry Barafications",
+       "notes": ""
+      },
+      {
+       "id": 14487,
+       "name": "Sprites in Detail",
+       "notes": ""
+      }
+     ],
+     "url": "https://www.nexusmods.com/stardewvalley/mods/44387"
+    },
+    {
+     "id": 30064,
+     "name": "Bara Anthro Character Supplement",
+     "version": "1.1.3",
+     "updated": "2025-04-26",
+     "adult": true,
+     "file_id": 131336,
+     "file_name": "Bara Anthro Character Supplement",
+     "file_version": "1.1.3",
+     "size_mb": 2.2,
+     "archive_ext": "zip",
+     "marker": "Bara Anthro Character Supplement\\manifest.json",
+     "requires": [
+      {
+       "id": 0,
+       "name": "Bara Anthro - Furry Characters",
+       "notes": ""
+      },
+      {
+       "id": 0,
+       "name": "Enti's Furry Barafications",
+       "notes": ""
+      }
+     ],
+     "url": "https://www.nexusmods.com/stardewvalley/mods/30064"
+    },
+    {
+     "id": 26738,
+     "name": "Bara Anthro Shane",
+     "version": "1.1.2",
+     "updated": "2025-01-11",
+     "adult": true,
+     "file_id": 121913,
+     "file_name": "Bara Anthro Shane",
+     "file_version": "1.1.3",
+     "size_mb": 0.4,
+     "archive_ext": "rar",
+     "marker": "[CP]Bara Anthro Shane\\manifest.json",
+     "requires": [
+      {
+       "id": 1915,
+       "name": "Content Patcher",
+       "notes": ""
+      },
+      {
+       "id": 5098,
+       "name": "Generic Mod Config Menu (GMCM)",
+       "notes": ""
+      }
+     ],
+     "url": "https://www.nexusmods.com/stardewvalley/mods/26738"
+    },
+    {
+     "id": 29085,
+     "name": "Bara Anthro Alex",
+     "version": "1.1.0",
+     "updated": "2024-11-03",
+     "adult": true,
+     "file_id": 114879,
+     "file_name": "Bara Anthro Alex",
+     "file_version": "1.1.0",
+     "size_mb": 0.2,
+     "archive_ext": "rar",
+     "marker": "[CP]Bara Anthro Alex\\manifest.json",
+     "requires": [
+      {
+       "id": 1915,
+       "name": "Content Patcher",
+       "notes": ""
+      },
+      {
+       "id": 5098,
+       "name": "Generic Mod Config Menu (GMCM)",
+       "notes": ""
+      }
+     ],
+     "url": "https://www.nexusmods.com/stardewvalley/mods/29085"
+    },
+    {
+     "id": 30778,
+     "name": "Bara Anthro Giant Crop",
+     "version": "1.1.0",
+     "updated": "2025-01-11",
+     "adult": true,
+     "file_id": 121899,
+     "file_name": "Bara Anthro Giant Crop",
+     "file_version": "1.1.0",
+     "size_mb": 0.1,
+     "archive_ext": "rar",
+     "marker": "[CP]Bara Anthro Giant Crop\\manifest.json",
+     "requires": [
+      {
+       "id": 1915,
+       "name": "Content Patcher",
+       "notes": ""
+      },
+      {
+       "id": 5098,
+       "name": "Generic Mod Config Menu (GMCM)",
+       "notes": ""
+      }
+     ],
+     "url": "https://www.nexusmods.com/stardewvalley/mods/30778"
+    },
+    {
+     "id": 52692,
+     "name": "StardewAIExpanded Extended Input",
+     "version": "1",
+     "updated": "2026-09-22",
+     "adult": false,
+     "file_id": 183722,
+     "file_name": "StardewAIExpandedExtendedInput",
+     "file_version": "1",
+     "size_mb": 0.0,
+     "archive_ext": null,
+     "marker": "StardewAIExpandedExtendedInput\\manifest.json",
+     "requires": [],
+     "url": "https://www.nexusmods.com/stardewvalley/mods/52692"
+    }
+   ]
+  },
+  {
+   "key": "sve",
+   "label": "대확장 관련",
+   "mods": [
+    {
+     "id": 8633,
+     "name": "Stardew Valley Expanded Korean",
+     "version": "1.15.11",
+     "updated": "2025-07-01",
+     "adult": false,
+     "file_id": 136033,
+     "file_name": "Stardew Valley Expanded Korean",
+     "file_version": "1.15.11",
+     "size_mb": 5.1,
+     "archive_ext": "zip",
+     "marker": null,
+     "requires": [
+      {
+       "id": 1915,
+       "name": "Content Patcher",
+       "notes": "(Framework Mod) This is what most of the mod is written for.(선행모드)"
+      },
+      {
+       "id": 3231,
+       "name": "Farm Type Manager (FTM)",
+       "notes": "(Framework Mod) This mod allows custom forage, debris, and monsters to function.(선행모드)"
+      },
+      {
+       "id": 3753,
+       "name": "Stardew Valley Expanded",
+       "notes": "Required(원본 필수 모드) Stardew Valley Expanded Korean Translation(SVE 한국어 모드)"
+      }
+     ],
+     "url": "https://www.nexusmods.com/stardewvalley/mods/8633"
+    },
+    {
+     "id": 22271,
+     "name": "Furry Stardew Valley Expanded Continued",
+     "version": "1.1.6",
+     "updated": "2025-03-15",
+     "adult": false,
+     "file_id": 127504,
+     "file_name": "Furry Stardew Valley Expanded",
+     "file_version": "1.1.6",
+     "size_mb": 2.7,
+     "archive_ext": "zip",
+     "marker": "[CP] FurrySVE\\manifest.json",
+     "requires": [
+      {
+       "id": 1083,
+       "name": "Anthro Characters Continued - Furry Overhaul Mod With Optional Genderswaps",
+       "notes": ""
+      },
+      {
+       "id": 1915,
+       "name": "Content Patcher",
+       "notes": ""
+      },
+      {
+       "id": 3753,
+       "name": "Stardew Valley Expanded",
+       "notes": ""
+      }
+     ],
+     "url": "https://www.nexusmods.com/stardewvalley/mods/22271"
+    }
+   ]
+  },
+  {
+   "key": "qol",
+   "label": "편의성(기본 추천)",
+   "mods": [
+    {
+     "id": 239,
+     "name": "NPC Map Locations",
+     "version": "3.5.2",
+     "updated": "2026-04-25",
+     "adult": false,
+     "file_id": 165575,
+     "file_name": "NPC Map Locations 3.5.2",
+     "file_version": "3.5.2",
+     "size_mb": 0.1,
+     "archive_ext": "zip",
+     "marker": "NPCMapLocations\\manifest.json",
+     "requires": [],
+     "url": "https://www.nexusmods.com/stardewvalley/mods/239"
+    },
+    {
+     "id": 541,
+     "name": "Lookup Anything",
+     "version": "1.55.0",
+     "updated": "2026-03-15",
+     "adult": false,
+     "file_id": 160470,
+     "file_name": "Lookup Anything 1.55.0",
+     "file_version": "1.55.0",
+     "size_mb": 0.6,
+     "archive_ext": "zip",
+     "marker": "LookupAnything\\manifest.json",
+     "requires": [],
+     "url": "https://www.nexusmods.com/stardewvalley/mods/541"
+    },
+    {
+     "id": 7098,
+     "name": "UI Info Suite 2",
+     "version": "v2.3.7",
+     "updated": "2024-11-12",
+     "adult": false,
+     "file_id": 116310,
+     "file_name": "UI Info Suite 2 v2.3.7",
+     "file_version": "v2.3.7",
+     "size_mb": 0.6,
+     "archive_ext": "zip",
+     "marker": "UIInfoSuite2\\manifest.json",
+     "requires": [],
+     "url": "https://www.nexusmods.com/stardewvalley/mods/7098"
+    },
+    {
+     "id": 1063,
+     "name": "Automate",
+     "version": "2.6.1",
+     "updated": "2026-03-15",
+     "adult": false,
+     "file_id": 160585,
+     "file_name": "Automate 2.6.1",
+     "file_version": "2.6.1",
+     "size_mb": 0.2,
+     "archive_ext": "zip",
+     "marker": "Automate\\manifest.json",
+     "requires": [],
+     "url": "https://www.nexusmods.com/stardewvalley/mods/1063"
+    },
+    {
+     "id": 518,
+     "name": "Chests Anywhere",
+     "version": "1.30.1",
+     "updated": "2026-03-15",
+     "adult": false,
+     "file_id": 160464,
+     "file_name": "Chests Anywhere 1.30.1",
+     "file_version": "1.30.1",
+     "size_mb": 0.2,
+     "archive_ext": "zip",
+     "marker": "ChestsAnywhere\\manifest.json",
+     "requires": [],
+     "url": "https://www.nexusmods.com/stardewvalley/mods/518"
+    },
+    {
+     "id": 5,
+     "name": "CJB Show Item Sell Price",
+     "version": "1.11.0",
+     "updated": "2026-04-20",
+     "adult": false,
+     "file_id": 164954,
+     "file_name": "CJB Show Item Sell Price 1.11.0",
+     "file_version": "1.11.0",
+     "size_mb": 0.0,
+     "archive_ext": "zip",
+     "marker": "CJBShowItemSellPrice\\manifest.json",
+     "requires": [],
+     "url": "https://www.nexusmods.com/stardewvalley/mods/5"
+    },
+    {
+     "id": 1401,
+     "name": "Tractor Mod",
+     "version": "4.24.4",
+     "updated": "2026-03-15",
+     "adult": false,
+     "file_id": 160476,
+     "file_name": "Tractor Mod 4.24.4",
+     "file_version": "4.24.4",
+     "size_mb": 0.4,
+     "archive_ext": "zip",
+     "marker": "TractorMod\\manifest.json",
+     "requires": [],
+     "url": "https://www.nexusmods.com/stardewvalley/mods/1401"
+    },
+    {
+     "id": 963,
+     "name": "Skull Cavern Elevator",
+     "version": "1.6.2",
+     "updated": "2024-11-06",
+     "adult": false,
+     "file_id": 115452,
+     "file_name": "SkullCavernElevator",
+     "file_version": "1.6.2",
+     "size_mb": 0.2,
+     "archive_ext": "zip",
+     "marker": "SkullCavernElevator\\manifest.json",
+     "requires": [],
+     "url": "https://www.nexusmods.com/stardewvalley/mods/963"
+    },
+    {
+     "id": 1089,
+     "name": "Fast Animations",
+     "version": "1.16.2",
+     "updated": "2026-03-15",
+     "adult": false,
+     "file_id": 160468,
+     "file_name": "Fast Animations 1.16.2",
+     "file_version": "1.16.2",
+     "size_mb": 0.2,
+     "archive_ext": "zip",
+     "marker": "FastAnimations\\manifest.json",
+     "requires": [],
+     "url": "https://www.nexusmods.com/stardewvalley/mods/1089"
+    },
+    {
+     "id": 533,
+     "name": "Skip Intro",
+     "version": "1.9.25",
+     "updated": "2026-03-15",
+     "adult": false,
+     "file_id": 160473,
+     "file_name": "Skip Intro 1.9.25",
+     "file_version": "1.9.25",
+     "size_mb": 0.1,
+     "archive_ext": "zip",
+     "marker": "SkipIntro\\manifest.json",
+     "requires": [],
+     "url": "https://www.nexusmods.com/stardewvalley/mods/533"
+    },
+    {
+     "id": 11115,
+     "name": "Better Crafting",
+     "version": "2.18.0",
+     "updated": "2025-03-26",
+     "adult": false,
+     "file_id": 128398,
+     "file_name": "Better Crafting",
+     "file_version": "2.18.0",
+     "size_mb": 0.5,
+     "archive_ext": "zip",
+     "marker": "BetterCrafting\\manifest.json",
+     "requires": [],
+     "url": "https://www.nexusmods.com/stardewvalley/mods/11115"
+    },
+    {
+     "id": 10384,
+     "name": "Convenient Inventory",
+     "version": "1.6.1",
+     "updated": "2026-05-25",
+     "adult": false,
+     "file_id": 168904,
+     "file_name": "ConvenientInventory-1.6.1",
+     "file_version": "1.6.1",
+     "size_mb": 0.1,
+     "archive_ext": "zip",
+     "marker": "ConvenientInventory\\manifest.json",
+     "requires": [],
+     "url": "https://www.nexusmods.com/stardewvalley/mods/10384"
+    },
+    {
+     "id": 21001,
+     "name": "Gift Taste Helper Continued x2",
+     "version": "1.2.5",
+     "updated": "2025-02-15",
+     "adult": false,
+     "file_id": 125189,
+     "file_name": "Gift Taste Helper Continued x2",
+     "file_version": "1.2.5",
+     "size_mb": 0.1,
+     "archive_ext": "zip",
+     "marker": "GiftTasteHelper\\manifest.json",
+     "requires": [],
+     "url": "https://www.nexusmods.com/stardewvalley/mods/21001"
+    },
+    {
+     "id": 509,
+     "name": "Experience Bars",
+     "version": "1.4.6",
+     "updated": "2025-10-18",
+     "adult": false,
+     "file_id": 145904,
+     "file_name": "Experience Bars 1.4.6",
+     "file_version": "1.4.6",
+     "size_mb": 0.1,
+     "archive_ext": "zip",
+     "marker": "ExperienceBars\\manifest.json",
+     "requires": [],
+     "url": "https://www.nexusmods.com/stardewvalley/mods/509"
+    },
+    {
+     "id": 8505,
+     "name": "Event Lookup",
+     "version": "0.2.8",
+     "updated": "2024-04-13",
+     "adult": false,
+     "file_id": 91865,
+     "file_name": "Event Lookup 0.2.9",
+     "file_version": "0.2.9",
+     "size_mb": 0.1,
+     "archive_ext": "zip",
+     "marker": "EventLookup\\manifest.json",
+     "requires": [],
+     "url": "https://www.nexusmods.com/stardewvalley/mods/8505"
+    },
+    {
+     "id": 6752,
+     "name": "Range Highlight",
+     "version": "4.2.1",
+     "updated": "2024-06-08",
+     "adult": false,
+     "file_id": 103097,
+     "file_name": "RangeHighlight 4.2.1",
+     "file_version": "4.2.1",
+     "size_mb": 0.1,
+     "archive_ext": "zip",
+     "marker": "RangeHighlight\\manifest.json",
+     "requires": [
+      {
+       "id": 5098,
+       "name": "Generic Mod Config Menu (GMCM)",
+       "notes": "Optional"
+      },
+      {
+       "id": 10505,
+       "name": "GMCM Options",
+       "notes": "Optional"
+      }
+     ],
+     "url": "https://www.nexusmods.com/stardewvalley/mods/6752"
+    },
+    {
+     "id": 859,
+     "name": "Better Ranching",
+     "version": "2.0.6",
+     "updated": "2026-11-11",
+     "adult": false,
+     "file_id": 190873,
+     "file_name": "BetterRanching",
+     "file_version": "2.0.6",
+     "size_mb": 0.0,
+     "archive_ext": null,
+     "marker": null,
+     "requires": [
+      {
+       "id": 0,
+       "name": "SMAPI",
+       "notes": ""
+      }
+     ],
+     "url": "https://www.nexusmods.com/stardewvalley/mods/859"
+    },
+    {
+     "id": 3109,
+     "name": "Automatic Gates",
+     "version": "2.5.5",
+     "updated": "2026-03-27",
+     "adult": false,
+     "file_id": 162374,
+     "file_name": "AutomaticGates 2.5.5",
+     "file_version": "2.5.5",
+     "size_mb": 0.0,
+     "archive_ext": "zip",
+     "marker": "AutomaticGates\\manifest.json",
+     "requires": [],
+     "url": "https://www.nexusmods.com/stardewvalley/mods/3109"
+    },
+    {
+     "id": 15223,
+     "name": "Passable Crops",
+     "version": "1.3.2",
+     "updated": "2026-11-24",
+     "adult": false,
+     "file_id": 192485,
+     "file_name": "PassableCrops",
+     "file_version": "1.3.2",
+     "size_mb": 0.0,
+     "archive_ext": null,
+     "marker": null,
+     "requires": [
+      {
+       "id": 5098,
+       "name": "Generic Mod Config Menu (GMCM)",
+       "notes": "Optional"
+      }
+     ],
+     "url": "https://www.nexusmods.com/stardewvalley/mods/15223"
+    },
+    {
+     "id": 8897,
+     "name": "Visible Fish - see catchable fish in the water",
+     "version": "0.4.2",
+     "updated": "2024-05-22",
+     "adult": false,
+     "file_id": 100507,
+     "file_name": "Visible FIsh 0.4.2",
+     "file_version": "0.4.2",
+     "size_mb": 0.0,
+     "archive_ext": "zip",
+     "marker": "VisibleFish\\manifest.json",
+     "requires": [],
+     "url": "https://www.nexusmods.com/stardewvalley/mods/8897"
+    },
+    {
+     "id": 1691,
+     "name": "Data Layers",
+     "version": "1.23.0",
+     "updated": "2026-03-15",
+     "adult": false,
+     "file_id": 160466,
+     "file_name": "Data Layers 1.23.0",
+     "file_version": "1.23.0",
+     "size_mb": 0.2,
+     "archive_ext": "zip",
+     "marker": "DataLayers\\manifest.json",
+     "requires": [],
+     "url": "https://www.nexusmods.com/stardewvalley/mods/1691"
+    },
+    {
+     "id": 7500,
+     "name": "Horse Flute Anywhere",
+     "version": "1.3.6",
+     "updated": "2026-03-15",
+     "adult": false,
+     "file_id": 160469,
+     "file_name": "Horse Flute Anywhere 1.3.6",
+     "file_version": "1.3.6",
+     "size_mb": 0.1,
+     "archive_ext": "zip",
+     "marker": "HorseFluteAnywhere\\manifest.json",
+     "requires": [],
+     "url": "https://www.nexusmods.com/stardewvalley/mods/7500"
+    },
+    {
+     "id": 7409,
+     "name": "To-Dew",
+     "version": "2.6.3",
+     "updated": "2026-08-23",
+     "adult": false,
+     "file_id": 179869,
+     "file_name": "ToDew 2.6.3",
+     "file_version": "2.6.3",
+     "size_mb": 0.1,
+     "archive_ext": null,
+     "marker": "ToDew\\manifest.json",
+     "requires": [
+      {
+       "id": 5098,
+       "name": "Generic Mod Config Menu (GMCM)",
+       "notes": "Optional"
+      },
+      {
+       "id": 10505,
+       "name": "GMCM Options",
+       "notes": "Optional"
+      }
+     ],
+     "url": "https://www.nexusmods.com/stardewvalley/mods/7409"
+    }
+   ]
+  },
+  {
+   "key": "cheat",
+   "label": "치트 성격(선택)",
+   "mods": [
+    {
+     "id": 4,
+     "name": "CJB Cheats Menu",
+     "version": "1.42.0",
+     "updated": "2026-04-20",
+     "adult": false,
+     "file_id": 164952,
+     "file_name": "CJB Cheats Menu 1.42.0",
+     "file_version": "1.42.0",
+     "size_mb": 0.2,
+     "archive_ext": "zip",
+     "marker": "CJBCheatsMenu\\manifest.json",
+     "requires": [],
+     "url": "https://www.nexusmods.com/stardewvalley/mods/4"
+    },
+    {
+     "id": 93,
+     "name": "CJB Item Spawner",
+     "version": "2.5.6",
+     "updated": "2026-03-15",
+     "adult": false,
+     "file_id": 160593,
+     "file_name": "CJB Item Spawner 2.5.6",
+     "file_version": "2.5.6",
+     "size_mb": 0.1,
+     "archive_ext": "zip",
+     "marker": "CJBItemSpawner\\manifest.json",
+     "requires": [],
+     "url": "https://www.nexusmods.com/stardewvalley/mods/93"
+    },
+    {
+     "id": 3900,
+     "name": "Noclip Mode",
+     "version": "1.3.20",
+     "updated": "2026-03-15",
+     "adult": false,
+     "file_id": 160471,
+     "file_name": "Noclip Mode 1.3.20",
+     "file_version": "1.3.20",
+     "size_mb": 0.1,
+     "archive_ext": "zip",
+     "marker": "NoclipMode\\manifest.json",
+     "requires": [],
+     "url": "https://www.nexusmods.com/stardewvalley/mods/3900"
+    },
+    {
+     "id": 169,
+     "name": "TimeSpeed",
+     "version": "2.8.1",
+     "updated": "2026-03-15",
+     "adult": false,
+     "file_id": 160619,
+     "file_name": "TimeSpeed 2.8.1",
+     "file_version": "2.8.1",
+     "size_mb": 0.1,
+     "archive_ext": "zip",
+     "marker": "TimeSpeed\\manifest.json",
+     "requires": [],
+     "url": "https://www.nexusmods.com/stardewvalley/mods/169"
+    },
+    {
+     "id": 2697,
+     "name": "Skip Fishing Minigame",
+     "version": "0.7.4",
+     "updated": "2024-11-04",
+     "adult": false,
+     "file_id": 115145,
+     "file_name": "SkipFishingMinigameDotnet5 0.7.4.zip",
+     "file_version": "0.7.4",
+     "size_mb": 0.0,
+     "archive_ext": "zip",
+     "marker": "SkipFishingMinigameDotnet5\\manifest.json",
+     "requires": [],
+     "url": "https://www.nexusmods.com/stardewvalley/mods/2697"
+    },
+    {
+     "id": 3213,
+     "name": "StardewHack",
+     "version": "7.4",
+     "updated": "2024-11-06",
+     "adult": false,
+     "file_id": 115429,
+     "file_name": "Stardew Hack",
+     "file_version": "7.4",
+     "size_mb": 0.0,
+     "archive_ext": "zip",
+     "marker": "StardewHack\\manifest.json",
+     "requires": [
+      {
+       "id": 5098,
+       "name": "Generic Mod Config Menu (GMCM)",
+       "notes": "Optional"
+      }
+     ],
+     "url": "https://www.nexusmods.com/stardewvalley/mods/3213"
+    },
+    {
+     "id": 3214,
+     "name": "Wear More Rings",
+     "version": "7.9",
+     "updated": "2025-05-28",
+     "adult": false,
+     "file_id": 133326,
+     "file_name": "Wear More Rings",
+     "file_version": "7.9",
+     "size_mb": 0.0,
+     "archive_ext": "zip",
+     "marker": "WearMoreRings\\manifest.json",
+     "requires": [
+      {
+       "id": 3213,
+       "name": "StardewHack",
+       "notes": ""
+      },
+      {
+       "id": 5098,
+       "name": "Generic Mod Config Menu (GMCM)",
+       "notes": "Optional"
+      }
+     ],
+     "url": "https://www.nexusmods.com/stardewvalley/mods/3214"
+    },
+    {
+     "id": 1845,
+     "name": "Bigger Backpack",
+     "version": "7.3",
+     "updated": "2024-06-01",
+     "adult": false,
+     "file_id": 102115,
+     "file_name": "Bigger Backpack",
+     "file_version": "7.3",
+     "size_mb": 0.0,
+     "archive_ext": "zip",
+     "marker": "BiggerBackpack\\manifest.json",
+     "requires": [
+      {
+       "id": 3213,
+       "name": "StardewHack",
+       "notes": ""
+      }
+     ],
+     "url": "https://www.nexusmods.com/stardewvalley/mods/1845"
+    }
+   ]
+  },
+  {
+   "key": "furry",
+   "label": "퍼리(선택)",
+   "mods": [
+    {
+     "id": 9969,
+     "name": "Fashion Sense",
+     "version": "7.5.0",
+     "updated": "2026-03-12",
+     "adult": false,
+     "file_id": 160184,
+     "file_name": "Fashion Sense 7.5.0",
+     "file_version": "7.5.0",
+     "size_mb": 0.3,
+     "archive_ext": "zip",
+     "marker": "FashionSense\\manifest.json",
+     "requires": [],
+     "url": "https://www.nexusmods.com/stardewvalley/mods/9969"
+    },
+    {
+     "id": 7618,
+     "name": "Furry Farmer",
+     "version": "2.0.3",
+     "updated": "2024-03-27",
+     "adult": false,
+     "file_id": 86212,
+     "file_name": "Furry Farmer",
+     "file_version": "2.1.0",
+     "size_mb": 0.4,
+     "archive_ext": "zip",
+     "marker": "[CP] Furry Farmer\\manifest.json",
+     "requires": [
+      {
+       "id": 1915,
+       "name": "Content Patcher",
+       "notes": "Required to run."
+      },
+      {
+       "id": 9969,
+       "name": "Fashion Sense",
+       "notes": "Not required, but heavily recommended to complete your experience."
+      },
+      {
+       "id": 10324,
+       "name": "FS - SH's Animals and Myths Pack",
+       "notes": "Not required, but heavily recommended to complete your experience."
+      },
+      {
+       "id": 17220,
+       "name": "No Blink",
+       "notes": "Not required, but makes it so that the farmer doesn't blink, which is good cuz some species' heads make blinks glitch"
+      },
+      {
+       "id": 1083,
+       "name": "Anthro Characters Continued - Furry Overhaul Mod With Optional Genderswaps",
+       "notes": "Not required, but an excellent addition to your furry farmer experience to have other furry characters running about!"
+      }
+     ],
+     "url": "https://www.nexusmods.com/stardewvalley/mods/7618"
+    },
+    {
+     "id": 34230,
+     "name": "Furry Farmers (Fashion Sense Port)",
+     "version": "0.9.3",
+     "updated": "2025-06-04",
+     "adult": false,
+     "file_id": 133859,
+     "file_name": "Furry Farmers 0.9.3",
+     "file_version": "0.9.3",
+     "size_mb": 0.3,
+     "archive_ext": "zip",
+     "marker": "[FS] Furry Farmers\\manifest.json",
+     "requires": [
+      {
+       "id": 9969,
+       "name": "Fashion Sense",
+       "notes": "This Mod is REQUIRED to use this Mod"
+      },
+      {
+       "id": 10324,
+       "name": "FS - SH's Animals and Myths Pack",
+       "notes": "For Tails and Ears"
+      },
+      {
+       "id": 5098,
+       "name": "Generic Mod Config Menu (GMCM)",
+       "notes": "For The Mod Config Menu"
+      }
+     ],
+     "url": "https://www.nexusmods.com/stardewvalley/mods/34230"
+    },
+    {
+     "id": 9413,
+     "name": "Anthro Babies Expanded (Furry Mod)",
+     "version": "1.2.3",
+     "updated": "2024-04-23",
+     "adult": false,
+     "file_id": 94716,
+     "file_name": "Anthro Babies Expanded 1.2.3",
+     "file_version": "1.2.3",
+     "size_mb": 1.3,
+     "archive_ext": "rar",
+     "marker": "[CP] Anthro Babies Expanded\\manifest.json",
+     "requires": [
+      {
+       "id": 1915,
+       "name": "Content Patcher",
+       "notes": ""
+      }
+     ],
+     "url": "https://www.nexusmods.com/stardewvalley/mods/9413"
+    },
+    {
+     "id": 25540,
+     "name": "Anthro Characters Continued Animated Portrait",
+     "version": "0.3",
+     "updated": "2024-08-18",
+     "adult": false,
+     "file_id": 109511,
+     "file_name": "Animated Anthro Characters Continued Portrait",
+     "file_version": "0.3",
+     "size_mb": 1.1,
+     "archive_ext": "zip",
+     "marker": "[CP-A] Animated Anthro Characters Continued Portrait\\manifest.json",
+     "requires": [
+      {
+       "id": 1083,
+       "name": "Anthro Characters Continued - Furry Overhaul Mod With Optional Genderswaps",
+       "notes": ""
+      },
+      {
+       "id": 1915,
+       "name": "Content Patcher",
+       "notes": ""
+      },
+      {
+       "id": 3853,
+       "name": "Content Patcher Animations",
+       "notes": ""
+      },
+      {
+       "id": 22271,
+       "name": "Furry Stardew Valley Expanded Continued",
+       "notes": "Optional. The animation is based on the portraits from furry SVE"
+      }
+     ],
+     "url": "https://www.nexusmods.com/stardewvalley/mods/25540"
+    }
+   ]
+  },
+  {
+   "key": "bara_opt",
+   "label": "Bara 추가(선택)",
+   "mods": [
+    {
+     "id": 26535,
+     "name": "Bara Anthro Obelisk And Furniture",
+     "version": "1.1.0",
+     "updated": "2024-08-04",
+     "adult": true,
+     "file_id": 108492,
+     "file_name": "Bara Anthro Obelisk And Furniture (underwear)",
+     "file_version": "1.1.2",
+     "size_mb": 0.1,
+     "archive_ext": "rar",
+     "marker": "[CP]Bara Anthro Obelisk (underwear)\\manifest.json",
+     "requires": [
+      {
+       "id": 1915,
+       "name": "Content Patcher",
+       "notes": ""
+      },
+      {
+       "id": 9246,
+       "name": "Alternative Textures",
+       "notes": ""
+      }
+     ],
+     "url": "https://www.nexusmods.com/stardewvalley/mods/26535"
+    },
+    {
+     "id": 31567,
+     "name": "Bara Anthro Bouncer -PORTRAIT ONLY-",
+     "version": "1.6",
+     "updated": "2025-02-09",
+     "adult": true,
+     "file_id": 124667,
+     "file_name": "(CP) Bara Anthro Bouncer -PORTRAIT ONLY-",
+     "file_version": "1.0.0",
+     "size_mb": 0.0,
+     "archive_ext": "rar",
+     "marker": "[CP] Bara Anthro Bouncer Portrait\\manifest.json",
+     "requires": [
+      {
+       "id": 22977,
+       "name": "Bara Anthro - Furry Characters",
+       "notes": "Must have to also affect the Bouncer's overworld sprites"
+      },
+      {
+       "id": 1083,
+       "name": "Anthro Characters Continued - Furry Overhaul Mod With Optional Genderswaps",
+       "notes": "Optional, but recommended"
+      },
+      {
+       "id": 1915,
+       "name": "Content Patcher",
+       "notes": ""
+      },
+      {
+       "id": 5098,
+       "name": "Generic Mod Config Menu (GMCM)",
+       "notes": "Optional"
+      }
+     ],
+     "url": "https://www.nexusmods.com/stardewvalley/mods/31567"
+    },
+    {
+     "id": 25898,
+     "name": "Bara Alex Anthro Overhaul",
+     "version": "1.1",
+     "updated": "2024-12-18",
+     "adult": true,
+     "file_id": 119621,
+     "file_name": "Bara Alex Anthro Overhaul",
+     "file_version": "1.2",
+     "size_mb": 0.1,
+     "archive_ext": "zip",
+     "marker": "[CP]Bara Alex Anthro Overhaul\\manifest.json",
+     "requires": [
+      {
+       "id": 1083,
+       "name": "Anthro Characters Continued - Furry Overhaul Mod With Optional Genderswaps",
+       "notes": ""
+      }
+     ],
+     "url": "https://www.nexusmods.com/stardewvalley/mods/25898"
+    },
+    {
+     "id": 25073,
+     "name": "SFW Bara Anthro - Furry Characters",
+     "version": "1.0",
+     "updated": "2024-06-11",
+     "adult": false,
+     "file_id": 103428,
+     "file_name": "Sfw Bara Anthro characters",
+     "file_version": "1.0",
+     "size_mb": 0.6,
+     "archive_ext": "rar",
+     "marker": "BaraAnthroCharactersSFW-1.0\\manifest.json",
+     "requires": [
+      {
+       "id": 1083,
+       "name": "Anthro Characters Continued - Furry Overhaul Mod With Optional Genderswaps",
+       "notes": ""
+      }
+     ],
+     "url": "https://www.nexusmods.com/stardewvalley/mods/25073"
+    }
+   ]
+  },
+  {
+   "key": "bara_explicit",
+   "label": "Bara 수위 높음(선택, 기본 제외)",
+   "mods": [
+    {
+     "id": 28703,
+     "name": "Bara Anthro  Furry Characters  Supplement to pornographic content.",
+     "version": "2.0.1",
+     "updated": "2026-08-10",
+     "adult": true,
+     "file_id": 178131,
+     "file_name": "Bara Anthro Furry Characters Supplement",
+     "file_version": "2.0.1",
+     "size_mb": 0.7,
+     "archive_ext": null,
+     "marker": "[CP]Bara Anthro Furry Characters Supplement to pornographic content\\manifest.json",
+     "requires": [
+      {
+       "id": 1083,
+       "name": "Anthro Characters Continued - Furry Overhaul Mod With Optional Genderswaps",
+       "notes": "You must download this module.  (This is the original Furry mod)"
+      },
+      {
+       "id": 22977,
+       "name": "Bara Anthro - Furry Characters",
+       "notes": "You must download this module.（This is the original version before my second creation.）"
+      },
+      {
+       "id": 30064,
+       "name": "Bara Anthro Character Supplement",
+       "notes": "You must download this module.（If you don't want to manually replace the image file, recommend downloading this.）"
+      },
+      {
+       "id": 1915,
+       "name": "Content Patcher",
+       "notes": "You must download this module.(This is necessary for loading mod)"
+      },
+      {
+       "id": 5098,
+       "name": "Generic Mod Config Menu (GMCM)",
+       "notes": "You must download this module.(This is necessary for loading mod)"
+      }
+     ],
+     "url": "https://www.nexusmods.com/stardewvalley/mods/28703"
+    },
+    {
+     "id": 38904,
+     "name": "Bara Anthro Horny Bachelors with optional Bara Anthro Horny Festivals",
+     "version": "1.02",
+     "updated": "2025-10-30",
+     "adult": true,
+     "file_id": 146710,
+     "file_name": "Bara Furry Horny Bachelors",
+     "file_version": "1.02",
+     "size_mb": 3.8,
+     "archive_ext": "zip",
+     "marker": null,
+     "requires": [
+      {
+       "id": 2564,
+       "name": "Horny Bachelors (Content Patcher)",
+       "notes": "To make sprites/portraits bara furries"
+      },
+      {
+       "id": 1083,
+       "name": "Anthro Characters Continued - Furry Overhaul Mod With Optional Genderswaps",
+       "notes": "To make sprites/portraits bara furries"
+      },
+      {
+       "id": 10844,
+       "name": "Horny Festivals",
+       "notes": "To make sprites/portraits bara furries"
+      }
+     ],
+     "url": "https://www.nexusmods.com/stardewvalley/mods/38904"
+    }
+   ]
+  },
+  {
+   "key": "male_nonfurry",
+   "label": "비퍼리 남성화(ACC와 충돌, 기본 제외)",
+   "mods": [
+    {
+     "id": 46434,
+     "name": "Female Bachelors - Male Genderbend",
+     "version": "1",
+     "updated": "2026-05-25",
+     "adult": false,
+     "file_id": 168934,
+     "file_name": "Female Bachelors   Male Genderbend",
+     "file_version": "1.0.1",
+     "size_mb": 5.7,
+     "archive_ext": "zip",
+     "marker": "Female Bachelors - Male Genderbend\\manifest.json",
+     "requires": [],
+     "url": "https://www.nexusmods.com/stardewvalley/mods/46434"
+    },
+    {
+     "id": 46435,
+     "name": "(CP) Dacar style portraits for Female Bachelors - Male Genderbend",
+     "version": "1.1",
+     "updated": "2026-08-19",
+     "adult": false,
+     "file_id": 179267,
+     "file_name": "(CP) Dacar FBMG",
+     "file_version": "1.1",
+     "size_mb": 21.5,
+     "archive_ext": null,
+     "marker": "(CP) Dacar FBMG\\manifest.json",
+     "requires": [],
+     "url": "https://www.nexusmods.com/stardewvalley/mods/46435"
+    },
+    {
+     "id": 44271,
+     "name": "Girls Are Boys and Boys Are Girls - Gender Swap Marriageables",
+     "version": "1.0.2",
+     "updated": "2026-05-25",
+     "adult": false,
+     "file_id": 168920,
+     "file_name": "GABaBAG",
+     "file_version": "1.0.2",
+     "size_mb": 0.1,
+     "archive_ext": "zip",
+     "marker": "Girls Are Boys and Boys Are Girls\\manifest.json",
+     "requires": [
+      {
+       "id": 1915,
+       "name": "Content Patcher",
+       "notes": ""
+      }
+     ],
+     "url": "https://www.nexusmods.com/stardewvalley/mods/44271"
+    },
+    {
+     "id": 9257,
+     "name": "Gender swap bachelorettes to male bachelors dialogue (CP)",
+     "version": "1.2.2",
+     "updated": "2022-01-08",
+     "adult": false,
+     "file_id": 49031,
+     "file_name": "Gender swap bachelorettes to male bachelors dialogue (CP)",
+     "file_version": "1.2.2",
+     "size_mb": 0.0,
+     "archive_ext": "zip",
+     "marker": "[CP]Gender swap bachelorettes to male bachelors dialogue\\manifest.json",
+     "requires": [
+      {
+       "id": 1915,
+       "name": "Content Patcher",
+       "notes": ""
+      },
+      {
+       "id": 9204,
+       "name": "OrangePie's DCBurger style gender swap bachelorettes to male bachelors Portraits and Sprites (CP)",
+       "notes": ""
+      }
+     ],
+     "url": "https://www.nexusmods.com/stardewvalley/mods/9257"
+    },
+    {
+     "id": 9204,
+     "name": "OrangePie's DCBurger style gender swap bachelorettes to male bachelors Portraits and Sprites (CP)",
+     "version": "1.1.0",
+     "updated": "2021-11-08",
+     "adult": false,
+     "file_id": 46953,
+     "file_name": "OrangePie's DCBurger style gender swap Sprite (Content Patcher)",
+     "file_version": "1.1.0",
+     "size_mb": 0.2,
+     "archive_ext": "zip",
+     "marker": "[CP]  OrangePie's DCBurger style gender swap bachelorettes to male bachelors Sprite\\manifest.json",
+     "requires": [
+      {
+       "id": 1915,
+       "name": "Content Patcher",
+       "notes": ""
+      },
+      {
+       "id": 1726,
+       "name": "PyTK - Platonymous Toolkit",
+       "notes": ""
+      }
+     ],
+     "url": "https://www.nexusmods.com/stardewvalley/mods/9204"
+    }
+   ]
+  },
+  {
+   "key": "expansion",
+   "label": "추가 대규모 확장(선택)",
+   "mods": [
+    {
+     "id": 7286,
+     "name": "Ridgeside Village",
+     "version": "2.5.16",
+     "updated": "2024-11-12",
+     "adult": false,
+     "file_id": 116329,
+     "file_name": "Ridgeside Village 2.5.17",
+     "file_version": "2.5.17",
+     "size_mb": 55.6,
+     "archive_ext": "zip",
+     "marker": "Ridgeside Village\\RidgesideVillage\\manifest.json",
+     "requires": [
+      {
+       "id": 1915,
+       "name": "Content Patcher",
+       "notes": "Required"
+      },
+      {
+       "id": 8626,
+       "name": "Custom Companions",
+       "notes": "Required"
+      },
+      {
+       "id": 3231,
+       "name": "Farm Type Manager (FTM)",
+       "notes": "Required"
+      },
+      {
+       "id": 1348,
+       "name": "SpaceCore",
+       "notes": "Required"
+      }
+     ],
+     "url": "https://www.nexusmods.com/stardewvalley/mods/7286"
+    },
+    {
+     "id": 8371,
+     "name": "Ridgeside Village Korean Translation",
+     "version": "2.5.17.3",
+     "updated": "2025-06-24",
+     "adult": false,
+     "file_id": 135431,
+     "file_name": "Ridgeside Village Korean",
+     "file_version": "2.15.17.3",
+     "size_mb": 2.4,
+     "archive_ext": "zip",
+     "marker": null,
+     "requires": [
+      {
+       "id": 1915,
+       "name": "Content Patcher",
+       "notes": "Required (Version 1.21.0 and above needed)(선행모드)"
+      },
+      {
+       "id": 8626,
+       "name": "Custom Companions",
+       "notes": "Required for versions 1.2.8 and above(선행모드)"
+      },
+      {
+       "id": 3231,
+       "name": "Farm Type Manager (FTM)",
+       "notes": "Required(선행모드)"
+      },
+      {
+       "id": 7286,
+       "name": "Ridgeside Village",
+       "notes": "Required(원본 필수 모드) Ridgeside Villeage Korean Translation(RSV 한국어 모드)"
+      },
+      {
+       "id": 1348,
+       "name": "SpaceCore",
+       "notes": "Required(선행모드)"
+      }
+     ],
+     "url": "https://www.nexusmods.com/stardewvalley/mods/8371"
+    },
+    {
+     "id": 8626,
+     "name": "Custom Companions",
+     "version": "5.1.0",
+     "updated": "2025-12-19",
+     "adult": false,
+     "file_id": 150992,
+     "file_name": "Custom Companions 5.1.0",
+     "file_version": "5.1.0",
+     "size_mb": 0.1,
+     "archive_ext": "zip",
+     "marker": "CustomCompanions\\manifest.json",
+     "requires": [],
+     "url": "https://www.nexusmods.com/stardewvalley/mods/8626"
+    },
+    {
+     "id": 5787,
+     "name": "East Scarp",
+     "version": "3.0.9",
+     "updated": "2026-05-30",
+     "adult": false,
+     "file_id": 169442,
+     "file_name": "East Scarp Remastered",
+     "file_version": "3.0.9",
+     "size_mb": 40.8,
+     "archive_ext": "zip",
+     "marker": "East Scarp REMASTERED\\ESBarberShop\\manifest.json",
+     "requires": [
+      {
+       "id": 1915,
+       "name": "Content Patcher",
+       "notes": ""
+      },
+      {
+       "id": 3231,
+       "name": "Farm Type Manager (FTM)",
+       "notes": ""
+      },
+      {
+       "id": 9599,
+       "name": "Lumisteria Tilesheets - Indoor",
+       "notes": ""
+      },
+      {
+       "id": 10448,
+       "name": "Lumisteria Tilesheets - Outdoor",
+       "notes": ""
+      },
+      {
+       "id": 14493,
+       "name": "Mapping Extensions and Extra Properties (MEEP)",
+       "notes": ""
+      },
+      {
+       "id": 1348,
+       "name": "SpaceCore",
+       "notes": ""
+      },
+      {
+       "id": 20139,
+       "name": "HxW Tilesheets",
+       "notes": ""
+      }
+     ],
+     "url": "https://www.nexusmods.com/stardewvalley/mods/5787"
+    },
+    {
+     "id": 9278,
+     "name": "East Scarp Total ver Korean",
+     "version": "2.5.2",
+     "updated": "2025-07-11",
+     "adult": false,
+     "file_id": 136751,
+     "file_name": "East Scarp Sub Total Ver Korean",
+     "file_version": "2.5.2",
+     "size_mb": 3.6,
+     "archive_ext": "zip",
+     "marker": null,
+     "requires": [
+      {
+       "id": 13437,
+       "name": "Creative Differences - NPC Rodney (East Scarp)",
+       "notes": ""
+      },
+      {
+       "id": 5787,
+       "name": "East Scarp",
+       "notes": ""
+      },
+      {
+       "id": 13883,
+       "name": "Eli and Dylan - Custom NPCs for East Scarp",
+       "notes": ""
+      },
+      {
+       "id": 17315,
+       "name": "Fievel Goes East Scarp - Hat Mouse NPC",
+       "notes": ""
+      },
+      {
+       "id": 6398,
+       "name": "Juliet and Jessie the Joja Clerks",
+       "notes": ""
+      },
+      {
+       "id": 10016,
+       "name": "Lavril - East Scarp NPC (King's Raid)",
+       "notes": ""
+      },
+      {
+       "id": 10770,
+       "name": "Lurking in the Dark - NPC Sen (East Scarp)",
+       "notes": ""
+      },
+      {
+       "id": 29995,
+       "name": "Metalcore Goes Cottagecore - East Scarp Addon",
+       "notes": ""
+      },
+      {
+       "id": 18176,
+       "name": "Nora The Herpetologist - Custom NPC for East Scarp",
+       "notes": ""
+      },
+      {
+       "id": 16197,
+       "name": "Bear Family Custom NPCs - An Add-On for East Scarp",
+       "notes": ""
+      },
+      {
+       "id": 6675,
+       "name": "Tristan",
+       "notes": ""
+      },
+      {
+       "id": 5070,
+       "name": "The Ranch Expansion Marnie and Jas",
+       "notes": ""
+      }
+     ],
+     "url": "https://www.nexusmods.com/stardewvalley/mods/9278"
+    },
+    {
+     "id": 46121,
+     "name": "East Scarp Total Update Korean translation",
+     "version": "1.0.2",
+     "updated": "2026-05-13",
+     "adult": false,
+     "file_id": 167439,
+     "file_name": "Sword And Sorcery Korean",
+     "file_version": "1.0.3",
+     "size_mb": 0.5,
+     "archive_ext": "7z",
+     "marker": null,
+     "requires": [],
+     "url": "https://www.nexusmods.com/stardewvalley/mods/46121"
+    },
+    {
+     "id": 9599,
+     "name": "Lumisteria Tilesheets - Indoor",
+     "version": "1.4.0",
+     "updated": "2024-03-21",
+     "adult": false,
+     "file_id": 83792,
+     "file_name": "Lumisteria Tilesheets - Indoor",
+     "file_version": "1.4.0",
+     "size_mb": 1.6,
+     "archive_ext": "zip",
+     "marker": "[CP] Lumisteria Tilesheets - Indoor\\manifest.json",
+     "requires": [
+      {
+       "id": 1915,
+       "name": "Content Patcher",
+       "notes": ""
+      }
+     ],
+     "url": "https://www.nexusmods.com/stardewvalley/mods/9599"
+    },
+    {
+     "id": 10448,
+     "name": "Lumisteria Tilesheets - Outdoor",
+     "version": "1.3.0",
+     "updated": "2024-03-20",
+     "adult": false,
+     "file_id": 83413,
+     "file_name": "Lumisteria Tilesheets - Outdoor",
+     "file_version": "1.4.0",
+     "size_mb": 1.1,
+     "archive_ext": "zip",
+     "marker": "[CP] Lumisteria Tilesheets - Outdoor\\manifest.json",
+     "requires": [
+      {
+       "id": 1915,
+       "name": "Content Patcher",
+       "notes": ""
+      }
+     ],
+     "url": "https://www.nexusmods.com/stardewvalley/mods/10448"
+    },
+    {
+     "id": 14493,
+     "name": "Mapping Extensions and Extra Properties (MEEP)",
+     "version": "2.5.3",
+     "updated": "2026-08-27",
+     "adult": false,
+     "file_id": 165323,
+     "file_name": "MEEP",
+     "file_version": "2.5.3",
+     "size_mb": 0.1,
+     "archive_ext": "zip",
+     "marker": "MappingExtensionsAndExtraProperties\\manifest.json",
+     "requires": [
+      {
+       "id": 1915,
+       "name": "Content Patcher",
+       "notes": "Not strictly a requirement. Many of the properties can be added directly in Tiled, or via C#."
+      }
+     ],
+     "url": "https://www.nexusmods.com/stardewvalley/mods/14493"
+    },
+    {
+     "id": 20139,
+     "name": "HxW Tilesheets",
+     "version": "2.0.0",
+     "updated": "2025-07-19",
+     "adult": false,
+     "file_id": 137494,
+     "file_name": "HxW Tilesheets",
+     "file_version": "2.0.0",
+     "size_mb": 12.0,
+     "archive_ext": "zip",
+     "marker": null,
+     "requires": [
+      {
+       "id": 1915,
+       "name": "Content Patcher",
+       "notes": ""
+      }
+     ],
+     "url": "https://www.nexusmods.com/stardewvalley/mods/20139"
+    },
+    {
+     "id": 11111,
+     "name": "Sunberry Village",
+     "version": "1.1.2",
+     "updated": "2025-12-02",
+     "adult": false,
+     "file_id": 149662,
+     "file_name": "Sunberry Village",
+     "file_version": "1.1.2",
+     "size_mb": 14.5,
+     "archive_ext": "zip",
+     "marker": "Sunberry Village\\[CC] Sunberry Village\\manifest.json",
+     "requires": [
+      {
+       "id": 1915,
+       "name": "Content Patcher",
+       "notes": ""
+      },
+      {
+       "id": 8626,
+       "name": "Custom Companions",
+       "notes": ""
+      },
+      {
+       "id": 3231,
+       "name": "Farm Type Manager (FTM)",
+       "notes": ""
+      },
+      {
+       "id": 20139,
+       "name": "HxW Tilesheets",
+       "notes": ""
+      },
+      {
+       "id": 9599,
+       "name": "Lumisteria Tilesheets - Indoor",
+       "notes": ""
+      },
+      {
+       "id": 20357,
+       "name": "Item Extensions",
+       "notes": ""
+      }
+     ],
+     "url": "https://www.nexusmods.com/stardewvalley/mods/11111"
+    },
+    {
+     "id": 32868,
+     "name": "Sunberry Village Total ver Korean",
+     "version": "1.2.6",
+     "updated": "2025-08-13",
+     "adult": false,
+     "file_id": 140015,
+     "file_name": "Sunberry Village Sub Total ver Korean",
+     "file_version": "1.2.6",
+     "size_mb": 3.1,
+     "archive_ext": "zip",
+     "marker": null,
+     "requires": [
+      {
+       "id": 1915,
+       "name": "Content Patcher",
+       "notes": ""
+      },
+      {
+       "id": 8626,
+       "name": "Custom Companions",
+       "notes": ""
+      },
+      {
+       "id": 3231,
+       "name": "Farm Type Manager (FTM)",
+       "notes": ""
+      },
+      {
+       "id": 20139,
+       "name": "HxW Tilesheets",
+       "notes": ""
+      },
+      {
+       "id": 20357,
+       "name": "Item Extensions",
+       "notes": ""
+      },
+      {
+       "id": 9599,
+       "name": "Lumisteria Tilesheets - Indoor",
+       "notes": ""
+      },
+      {
+       "id": 32660,
+       "name": "Ripley the Farmer - Custom NPC for Sunberry Village",
+       "notes": ""
+      },
+      {
+       "id": 11111,
+       "name": "Sunberry Village",
+       "notes": ""
+      },
+      {
+       "id": 14286,
+       "name": "Wren the Plumber - Custom NPC for Sunberry Village",
+       "notes": ""
+      },
+      {
+       "id": 32689,
+       "name": "Lani - Custom NPC for Sunberry Village",
+       "notes": ""
+      },
+      {
+       "id": 32385,
+       "name": "Rose and the Alchemist - Custom NPCs for Sunberry Village",
+       "notes": ""
+      },
+      {
+       "id": 9999,
+       "name": "Always Raining in the Valley - Custom NPCs for Sunberry",
+       "notes": ""
+      },
+      {
+       "id": 33615,
+       "name": "Dao - Custom NPC for Sunberry Village",
+       "notes": ""
+      }
+     ],
+     "url": "https://www.nexusmods.com/stardewvalley/mods/32868"
+    },
+    {
+     "id": 20357,
+     "name": "Item Extensions",
+     "version": "1.16.0",
+     "updated": "2025-07-04",
+     "adult": false,
+     "file_id": 136272,
+     "file_name": "Item Extensions",
+     "file_version": "1.16.0",
+     "size_mb": 0.2,
+     "archive_ext": "zip",
+     "marker": "ItemExtensions\\manifest.json",
+     "requires": [],
+     "url": "https://www.nexusmods.com/stardewvalley/mods/20357"
+    },
+    {
+     "id": 9600,
+     "name": "Lumisteria Visit Mount Vapius",
+     "version": "2.0.0",
+     "updated": "2026-02-26",
+     "adult": false,
+     "file_id": 158234,
+     "file_name": "Visit Mount Vapius",
+     "file_version": "2.0.0",
+     "size_mb": 11.8,
+     "archive_ext": "zip",
+     "marker": "Visit Mount Vapius\\VisitMountVapius\\manifest.json",
+     "requires": [
+      {
+       "id": 1915,
+       "name": "Content Patcher",
+       "notes": ""
+      },
+      {
+       "id": 9296,
+       "name": "Esca's Modding Plugins (EMP)",
+       "notes": ""
+      },
+      {
+       "id": 3231,
+       "name": "Farm Type Manager (FTM)",
+       "notes": ""
+      },
+      {
+       "id": 20357,
+       "name": "Item Extensions",
+       "notes": ""
+      },
+      {
+       "id": 9599,
+       "name": "Lumisteria Tilesheets - Indoor",
+       "notes": ""
+      },
+      {
+       "id": 1348,
+       "name": "SpaceCore",
+       "notes": ""
+      },
+      {
+       "id": 17265,
+       "name": "Unlockable Bundles",
+       "notes": ""
+      },
+      {
+       "id": 27100,
+       "name": "Button's Extra Trigger Action Stuff (BETAS)",
+       "notes": ""
+      },
+      {
+       "id": 34530,
+       "name": "Custom Museum Framework (CMF)",
+       "notes": ""
+      }
+     ],
+     "url": "https://www.nexusmods.com/stardewvalley/mods/9600"
+    },
+    {
+     "id": 36644,
+     "name": "Lumisteria Visit Mount Vapius KOR",
+     "version": "1.3.4",
+     "updated": "2025-08-13",
+     "adult": false,
+     "file_id": 140019,
+     "file_name": "Lumisteria Visit Mount Vapius KOR",
+     "file_version": "1.3.4",
+     "size_mb": 1.0,
+     "archive_ext": "zip",
+     "marker": null,
+     "requires": [
+      {
+       "id": 1915,
+       "name": "Content Patcher",
+       "notes": ""
+      },
+      {
+       "id": 9296,
+       "name": "Esca's Modding Plugins (EMP)",
+       "notes": ""
+      },
+      {
+       "id": 3231,
+       "name": "Farm Type Manager (FTM)",
+       "notes": ""
+      },
+      {
+       "id": 20357,
+       "name": "Item Extensions",
+       "notes": ""
+      },
+      {
+       "id": 9599,
+       "name": "Lumisteria Tilesheets - Indoor",
+       "notes": ""
+      },
+      {
+       "id": 1348,
+       "name": "SpaceCore",
+       "notes": ""
+      },
+      {
+       "id": 17265,
+       "name": "Unlockable Bundles",
+       "notes": ""
+      },
+      {
+       "id": 9600,
+       "name": "Lumisteria Visit Mount Vapius",
+       "notes": ""
+      }
+     ],
+     "url": "https://www.nexusmods.com/stardewvalley/mods/36644"
+    },
+    {
+     "id": 9296,
+     "name": "Esca's Modding Plugins (EMP)",
+     "version": "1.7.2",
+     "updated": "2025-11-05",
+     "adult": false,
+     "file_id": 147269,
+     "file_name": "EMP v1.7.2",
+     "file_version": "1.7.2",
+     "size_mb": 0.1,
+     "archive_ext": "zip",
+     "marker": "EscasModdingPlugins\\manifest.json",
+     "requires": [],
+     "url": "https://www.nexusmods.com/stardewvalley/mods/9296"
+    },
+    {
+     "id": 17265,
+     "name": "Unlockable Bundles",
+     "version": "4.3.1",
+     "updated": "2026-05-15",
+     "adult": false,
+     "file_id": 167635,
+     "file_name": "Unlockable Bundles",
+     "file_version": "4.3.1",
+     "size_mb": 1.2,
+     "archive_ext": "zip",
+     "marker": "Unlockable Bundles\\manifest.json",
+     "requires": [],
+     "url": "https://www.nexusmods.com/stardewvalley/mods/17265"
+    },
+    {
+     "id": 27100,
+     "name": "Button's Extra Trigger Action Stuff (BETAS)",
+     "version": "3.5.2",
+     "updated": "2026-09-11",
+     "adult": false,
+     "file_id": 182388,
+     "file_name": "Button's Extra Trigger Action Stuff",
+     "file_version": "3.5.2",
+     "size_mb": 0.1,
+     "archive_ext": null,
+     "marker": "BETAS\\manifest.json",
+     "requires": [],
+     "url": "https://www.nexusmods.com/stardewvalley/mods/27100"
+    },
+    {
+     "id": 34530,
+     "name": "Custom Museum Framework (CMF)",
+     "version": "1.6.2",
+     "updated": "2026-03-07",
+     "adult": false,
+     "file_id": 159453,
+     "file_name": "Custom Museum Framework",
+     "file_version": "1.6.2",
+     "size_mb": 0.1,
+     "archive_ext": "zip",
+     "marker": "CustomMuseumFramework\\manifest.json",
+     "requires": [],
+     "url": "https://www.nexusmods.com/stardewvalley/mods/34530"
+    },
+    {
+     "id": 8587,
+     "name": "Downtown Zuzu",
+     "version": "0.9.4",
+     "updated": "2024-11-07",
+     "adult": false,
+     "file_id": 115599,
+     "file_name": "Downtown Zuzu",
+     "file_version": "0.9.4",
+     "size_mb": 117.2,
+     "archive_ext": "zip",
+     "marker": "Downtown-Zuzu-main\\[BL] Downtown Zuzu\\manifest.json",
+     "requires": [
+      {
+       "id": 1915,
+       "name": "Content Patcher",
+       "notes": "patches npcs and locations"
+      },
+      {
+       "id": 8626,
+       "name": "Custom Companions",
+       "notes": "adds nameless wandering NPCs"
+      },
+      {
+       "id": 3231,
+       "name": "Farm Type Manager (FTM)",
+       "notes": "adds mobs and ores to locations"
+      },
+      {
+       "id": 1536,
+       "name": "Mail Framework Mod",
+       "notes": "adds mail"
+      },
+      {
+       "id": 1348,
+       "name": "SpaceCore",
+       "notes": "allows us to perform certain tasks internally"
+      },
+      {
+       "id": 6183,
+       "name": "Train Station",
+       "notes": "(optional) for train! MAKE SURE you use the 1.6 alpha version!"
+      },
+      {
+       "id": 8630,
+       "name": "Walk to the Desert Redux",
+       "notes": "(optional) if you want to walk downwards from the freeway interchange (make sure you have all of this mod's requirements"
+      },
+      {
+       "id": 0,
+       "name": "BusLocations",
+       "notes": "this is a community-made 1.6 BL update (BL is still required for the mod)"
+      }
+     ],
+     "url": "https://www.nexusmods.com/stardewvalley/mods/8587"
+    },
+    {
+     "id": 8739,
+     "name": "Downtown ZUZU Korean",
+     "version": "0.9.2",
+     "updated": "2024-06-16",
+     "adult": false,
+     "file_id": 104008,
+     "file_name": "DTZ 0.9.2 Korean",
+     "file_version": "0.9.2",
+     "size_mb": 3.6,
+     "archive_ext": "zip",
+     "marker": null,
+     "requires": [
+      {
+       "id": 8587,
+       "name": "Downtown Zuzu",
+       "notes": ""
+      }
+     ],
+     "url": "https://www.nexusmods.com/stardewvalley/mods/8739"
+    },
+    {
+     "id": 14635,
+     "name": "Cape Stardew",
+     "version": "7.4.2",
+     "updated": "2026-10-25",
+     "adult": false,
+     "file_id": 188526,
+     "file_name": "CapeStardew 1.6",
+     "file_version": "7.4.2",
+     "size_mb": 13.0,
+     "archive_ext": null,
+     "marker": null,
+     "requires": [
+      {
+       "id": 1915,
+       "name": "Content Patcher",
+       "notes": "Strict Requirement"
+      },
+      {
+       "id": 3231,
+       "name": "Farm Type Manager (FTM)",
+       "notes": "Strict Requirement"
+      },
+      {
+       "id": 20357,
+       "name": "Item Extensions",
+       "notes": ""
+      },
+      {
+       "id": 22301,
+       "name": "Kimberlite Ore",
+       "notes": ""
+      },
+      {
+       "id": 29049,
+       "name": "Remapping - Minimap Project",
+       "notes": ""
+      },
+      {
+       "id": 25055,
+       "name": "Secret Note Framework",
+       "notes": ""
+      },
+      {
+       "id": 1348,
+       "name": "SpaceCore",
+       "notes": "Strict Requirement"
+      },
+      {
+       "id": 17265,
+       "name": "Unlockable Bundles",
+       "notes": "Strict Requirement"
+      },
+      {
+       "id": 49525,
+       "name": "Parchment",
+       "notes": "Optional Cape Stardew readable material collection guide"
+      }
+     ],
+     "url": "https://www.nexusmods.com/stardewvalley/mods/14635"
+    },
+    {
+     "id": 2571,
+     "name": "DeepWoods",
+     "version": "4.3.1-beta",
+     "updated": "2026-01-09",
+     "adult": false,
+     "file_id": 152905,
+     "file_name": "DeepWoodsMod-4.3.1-beta.zip",
+     "file_version": "4.3.1-beta",
+     "size_mb": 0.7,
+     "archive_ext": "zip",
+     "marker": "DeepWoodsMod\\manifest.json",
+     "requires": [],
+     "url": "https://www.nexusmods.com/stardewvalley/mods/2571"
+    }
+   ]
+  }
+ ]
+}
